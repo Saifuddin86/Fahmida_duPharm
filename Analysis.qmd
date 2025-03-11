@@ -1,6 +1,6 @@
 ---
 title: "Personal Level screening for COPD and COPD Patient Management Survey "
-format: docx
+format: pdf
 editor: visual
 editor_options: 
   chunk_output_type: console
@@ -21,8 +21,8 @@ execute:
 
 ```{r}
 library(readxl)
-data0<- read_excel("Personal Level screening for COPD.xlsx", 
-    sheet = "Sheet6")
+data0<- read_excel("Copy of Personal_Level_screening_for_COPD(1).xlsx", 
+    sheet = "Sheet6",skip = 1)
 #View(data0)
 
 library(tidyverse)
@@ -44,7 +44,7 @@ library(gtsummary)
 
 #glimpse(data0)
 
-data0[,c(3:10,12,14)] %>% 
+data0[,c(3:10,15,16,12,14)] %>% 
   tbl_summary(statistic = list(all_continuous() ~ "{mean} ({sd})"),
               label =list(`Do you have any member in your family have experienced the same condition?`="Do you have any member in your family have experienced the same condition? (Yes)" ))
 ```
@@ -143,19 +143,23 @@ vaccine_stat %>% filter(`Do you have previous history of vaccination? if yes, wr
 ### Which medication you are taking for COPD?
 
 ```{r}
-data0<- read_excel("Personal Level screening for COPD.xlsx", 
-    sheet = "Sheet6")
+#rm(list = ls())
+
+data0<- read_excel("Copy of Personal_Level_screening_for_COPD(1).xlsx", 
+    sheet = "Sheet6",skip = 1)
 
 #glimpse(data0)
 #view(data0)
+#data0$`Which medication you are taking for COPD (upated)?`
 
-data0 %>% 
-  separate_rows(`Which medication you are taking for COPD?`,sep = ",") %>% 
-  count(`Which medication you are taking for COPD?`, name = "Frequency")%>%
+data0 %>%separate_rows(`Which medication you are taking for COPD (upated)?`,sep = ",") %>% 
+  count(`Which medication you are taking for COPD (upated)?`, name = "Frequency") %>% 
   #print(n=55)
   mutate(Percentage = Frequency*100/250) %>%
-  arrange(-Frequency) %>% 
-  kable(digits = 2,col.names = c("Medication taking for COPD?`","Frequency","Percentage (out of 30)"))
+  #view() %>% 
+  arrange(-Frequency)->medi_take
+  
+medi_take %>%  kable(digits = 2,col.names = c("Medication taking for COPD?`","Frequency","Percentage (out of 30)"))
 
 ```
 
@@ -192,7 +196,7 @@ df_encoded <- data1 %>% select(id, age,gender,do_you_have_a_previous_history_of_
 
 #df_encoded$`Oxygen therapy`
 
-df_encoded %>% select(age,gender,do_you_have_a_previous_history_of_smoking,Corticosteroids,`Oxygen therapy`,Bronchodilators)->association_data
+df_encoded %>% select(age,gender,do_you_have_a_previous_history_of_smoking,Corticosteroids,`Oxygen therapy`,Bronchodialators)->association_data
 
 
 
@@ -202,6 +206,9 @@ df_encoded %>% select(age,gender,do_you_have_a_previous_history_of_smoking,Corti
 ### A) Is there any association between medication (Corticosteroids) and smoking?
 
 ```{r}
+#| label: tbl-tasso_corti
+#| tbl-cap: Association between smoking status and prevelance of Corticosteroids
+
 # Function to extract chi-square test statistic
 chisq_test_stat <- function(data, variable, by, ...) {
   chisq.test(table(data[[variable]], data[[by]])) %>% 
@@ -215,7 +222,6 @@ association_data %>% select(Corticosteroids,do_you_have_a_previous_history_of_sm
   tbl_summary(by=do_you_have_a_previous_history_of_smoking,
               label=list(do_you_have_a_previous_history_of_smoking~"Smoking status",
                          Corticosteroids~"Corticosteroids (Yes)"))%>%
-  #add_p(test = list(Corticosteroids ~ "chisq.test"))%>%
   add_stat(fns = everything() ~ chisq_test_stat) %>% 
   modify_header(statistic = "**Chi-square**", p.value = "**p-value**") %>%
   add_p(pvalue_fun = ~ style_pvalue(.x, digits = 3)) %>% 
@@ -225,7 +231,7 @@ association_data %>% select(Corticosteroids,do_you_have_a_previous_history_of_sm
 
 ```
 
-The prevalence of *Corticosteroids* was the most in group of participants/ patients who previously smoke (41%), followed by the participants who still smoking (31%) and who did not smoke (28%). But the proportions of prevalence of *Corticosteroids* are not significantly different among the groups, $\chi^2=3.68$, p-value=0.159.
+The prevalence of *Corticosteroids* was the most in group of participants/ patients who previously smoke (41%), followed by the participants who still smoking (31%) and who did not smoke (28%). But the proportions of prevalence of *Corticosteroids* are not significantly different among the groups, $\chi^2=3.68$, p-value=0.159 (@tbl-tasso_corti).
 
 ### B) Is there any association between medication (Oxygen therapy) and smoking?
 
@@ -234,24 +240,28 @@ association_data %>% select(`Oxygen therapy`,do_you_have_a_previous_history_of_s
   tbl_summary(by=do_you_have_a_previous_history_of_smoking,
               label=list(do_you_have_a_previous_history_of_smoking~"Smoking status",
                          `Oxygen therapy`~"Oxygen therapy (Yes)"))%>%
-  add_p() %>% 
-  modify_header(label = " ") %>%  # Row variable name
+  add_stat(fns = everything() ~ chisq_test_stat) %>% 
+  modify_header(statistic = "**Chi-square**", p.value = "**p-value**") %>%
+  add_p(pvalue_fun = ~ style_pvalue(.x, digits = 3)) %>%
   modify_spanning_header(starts_with("stat_") ~ "**Smoking status**")  # Column variable name
 
 
 ```
 
-### C) Is there any association between medication (Bronchodilators) and smoking?
+*Please describe same as @tbl-tasso_corti.*
+
+### C) Is there any association between medication (Bronchodialators) and smoking?
 
 ```{r}
 
 association_data %>% 
-  select(Bronchodilators,do_you_have_a_previous_history_of_smoking) %>% 
+  select(Bronchodialators,do_you_have_a_previous_history_of_smoking) %>% 
   tbl_summary(by=do_you_have_a_previous_history_of_smoking,
               label=list(do_you_have_a_previous_history_of_smoking~"Smoking status",
-                         Bronchodilators~"Bronchodilators (Yes)"))%>%
-  add_p() %>% 
-  modify_header(label = " ") %>%  # Row variable name
+                         Bronchodialators~"Bronchodilators (Yes)"))%>%
+  add_stat(fns = everything() ~ chisq_test_stat) %>% 
+  modify_header(statistic = "**Chi-square**", p.value = "**p-value**") %>%
+  add_p(pvalue_fun = ~ style_pvalue(.x, digits = 3)) %>%
   modify_spanning_header(starts_with("stat_") ~ "**Smoking status**")  # Column variable name
 ```
 
@@ -268,7 +278,8 @@ glm(`Oxygen therapy`~age+gender+do_you_have_a_previous_history_of_smoking,
 
 ```
 
-# COPD Patient Management Survey (n=30)
+# COPD Patient Management Survey_old (n=30)
+
 
 ```{r}
 #rm(list = ls())
@@ -345,7 +356,7 @@ Survey %>%
 #glimpse(Survey)
 
 Survey %>% 
-  separate_rows(`write diagnostic test if the previous answer is "others"`,sep = ",") %>% 
+  separate_rows(`write diagnostic test if the previous answer is "others"`,sep = ", ") %>% 
   count(`write diagnostic test if the previous answer is "others"`, name = "Frequency") %>% # Count occurrences
   mutate(Percentage = Frequency*100/30) %>%arrange(-Frequency) %>% 
   kable(digits = 2,col.names = c("Diagnostic test if the previous answer is others","Frequency","Percentage (out of 30)"))
@@ -397,3 +408,140 @@ Survey %>% select(`How often do you recommend follow up tests for COPD patient (
   tbl_summary()
 
 ```
+
+# COPD Patient Management Survey_updated (n=30)
+
+
+```{r}
+#rm(list = ls())
+
+```
+
+### Specialization
+
+Specialization of physicians.
+
+```{r}
+library(readxl)
+
+Survey2 <- read_excel("COPD Patient Management doctors Survey.xlsx", 
+    sheet = "updated",skip = 1)
+
+#glimpse(Survey)
+
+Survey2 %>% 
+  separate_rows(Specialization,sep = ",") %>% 
+  count(Specialization, name = "Frequency") %>% # Count occurrences
+  mutate(Percentage = Frequency*100/30) %>%arrange(-Frequency) %>% 
+  kable(digits = 2,col.names = c("Specialization","Frequency","Percentage (out of 30)"))
+
+
+```
+
+### The most common age group of COPD patient, Age group comes for recurrent treatment
+
+```{r}
+Survey2[,3:4] %>% tbl_summary()
+```
+
+### What are the most common symptoms presented by COPD patients?
+
+```{r}
+
+Survey2 %>% 
+  separate_rows(`What are the most common symptoms presented by COPD patients?`,sep = ";") %>% 
+  count(`What are the most common symptoms presented by COPD patients?`, name = "Frequency") %>% # Count occurrences
+  mutate(Percentage = Frequency*100/30) %>%arrange(-Frequency) %>% 
+  kable(digits = 2,col.names = c("Most common symptoms presented by COPD patients","Frequency","Percentage (out of 30)"))
+
+```
+
+### Write symptom if the previous answer is "others"
+
+```{r}
+
+Survey2 %>% 
+  separate_rows(`write symptom if the previous answer is "others"`,sep = ",") %>% 
+  count(`write symptom if the previous answer is "others"`, name = "Frequency") %>% # Count occurrences
+  mutate(Percentage = Frequency*100/30) %>%arrange(Frequency) %>% 
+  kable(digits = 2,col.names = c("Symptom if the previous answer is others","Frequency","Percentage (out of 30)"))
+```
+
+### Which diagnostic tests do you commonly use for diagnosis and monitoring COPD?
+
+```{r}
+#glimpse(Survey)
+
+Survey2 %>% 
+  separate_rows(`Which diagnostic tests do you commonly use for diagnosis and monitoring COPD?`,sep = ";") %>% 
+  count(`Which diagnostic tests do you commonly use for diagnosis and monitoring COPD?`, name = "Frequency") %>% # Count occurrences
+  mutate(Percentage = Frequency*100/30) %>%arrange(-Frequency) %>% 
+  kable(digits = 2,col.names = c("Diagnostic tests do you commonly use for diagnosis and monitoring COPD","Frequency","Percentage (out of 30)"))
+```
+
+### write diagnostic test if the previous answer is "others"
+
+```{r}
+
+#glimpse(Survey)
+
+Survey2 %>% 
+  separate_rows(`write diagnostic test if the previous answer is "others"`,sep = ", ") %>% 
+  count(`write diagnostic test if the previous answer is "others"`, name = "Frequency") %>% # Count occurrences
+  mutate(Percentage = Frequency*100/30) %>%arrange(-Frequency) %>% 
+  kable(digits = 2,col.names = c("Diagnostic test if the previous answer is others","Frequency","Percentage (out of 30)"))
+
+```
+
+### Which medication do you typically prescribe for COPD patients?
+
+```{r}
+#glimpse(Survey)
+
+Survey2 %>% 
+  separate_rows(`Which medication do you typically prescribe for COPD patients?`,sep = ";") %>% 
+  count(`Which medication do you typically prescribe for COPD patients?`, name = "Frequency") %>% # Count occurrences
+  mutate(Percentage = Frequency*100/30) %>%arrange(-Frequency) %>% 
+  kable(digits = 2,col.names = c("Medication do you typically prescribe for COPD patients?","Frequency","Percentage (out of 30)"))
+```
+
+### If previous answer is other, Kindly specify-
+
+Two answers-Long acting and Long-acting beta-agonists.
+
+### What is the average cost of a month's worth of COPD medication for a patient (estimate in local currency)?
+
+```{r}
+Survey2$`What is the average cost of a month's worth of COPD medication for a patient (estimate in local currency)?`<-factor(Survey2$`What is the average cost of a month's worth of COPD medication for a patient (estimate in local currency)?`,
+                                                                                                                            levels = c("About 5000tk","5000-10000 tk",
+                                                                                                                                       "10000-15000tk","15000-20000 tk",
+                                                                                                                                       "Depends on treatment plan"))
+
+Survey2 %>% select(`What is the average cost of a month's worth of COPD medication for a patient (estimate in local currency)?`) %>% 
+  tbl_summary()
+```
+
+### Do you observe any differences in medication response between smokers and non-smokers? If yes please describe-
+
+```{r}
+Survey2 %>% select(`Do you observe any differences in medication response between smokers and non-smokers?`, `If Yes, Please describe-`) %>% 
+  tbl_summary()
+```
+
+### How often do you recommend follow up tests for COPD patient (e.g. spirometry)?+
+
+### How frequently do COPD patients require hospitalization due to exacerbations? +
+
+### What lifestyle changes do you most commonly recommend to COPD patients? +
+
+### Please specify if previous answer is "Others" +
+
+### Are there any new treatments or medication for COPD that you find promising?
+
+```{r}
+Survey2 %>% select(`How often do you recommend follow up tests for COPD patient (e.g. spirometry)?`,`How frequently do COPD patients require hospitalization due to exacerbations?`,`What lifestyle changes do you most commonly recommend to COPD patients?`,`Please specify if previous answer is "Others"`,`Are there any new treatments or medication for COPD that you find promising?`) %>% 
+  tbl_summary()
+
+```
+
+

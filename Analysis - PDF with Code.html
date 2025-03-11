@@ -68,6 +68,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="Analysis - PDF with Code_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="Analysis - PDF with Code_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -128,23 +157,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">label =</span><span class="fu">list</span>(<span class="st">`</span><span class="at">Do you have any member in your family have experienced the same condition?</span><span class="st">`</span><span class="ot">=</span><span class="st">"Do you have any member in your family have experienced the same condition? (Yes)"</span> ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<div id="hjnpwgemas" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#hjnpwgemas table {
+<div id="oxxevvumbg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#oxxevvumbg table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#hjnpwgemas thead, #hjnpwgemas tbody, #hjnpwgemas tfoot, #hjnpwgemas tr, #hjnpwgemas td, #hjnpwgemas th {
+#oxxevvumbg thead, #oxxevvumbg tbody, #oxxevvumbg tfoot, #oxxevvumbg tr, #oxxevvumbg td, #oxxevvumbg th {
   border-style: none;
 }
 
-#hjnpwgemas p {
+#oxxevvumbg p {
   margin: 0;
   padding: 0;
 }
 
-#hjnpwgemas .gt_table {
+#oxxevvumbg .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -170,12 +199,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#hjnpwgemas .gt_caption {
+#oxxevvumbg .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#hjnpwgemas .gt_title {
+#oxxevvumbg .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -187,7 +216,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#hjnpwgemas .gt_subtitle {
+#oxxevvumbg .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -199,7 +228,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#hjnpwgemas .gt_heading {
+#oxxevvumbg .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -211,13 +240,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#hjnpwgemas .gt_bottom_border {
+#oxxevvumbg .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#hjnpwgemas .gt_col_headings {
+#oxxevvumbg .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -232,7 +261,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#hjnpwgemas .gt_col_heading {
+#oxxevvumbg .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -252,7 +281,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#hjnpwgemas .gt_column_spanner_outer {
+#oxxevvumbg .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -264,15 +293,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#hjnpwgemas .gt_column_spanner_outer:first-child {
+#oxxevvumbg .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#hjnpwgemas .gt_column_spanner_outer:last-child {
+#oxxevvumbg .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#hjnpwgemas .gt_column_spanner {
+#oxxevvumbg .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -284,11 +313,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#hjnpwgemas .gt_spanner_row {
+#oxxevvumbg .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#hjnpwgemas .gt_group_heading {
+#oxxevvumbg .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -314,7 +343,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#hjnpwgemas .gt_empty_group_heading {
+#oxxevvumbg .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -329,15 +358,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#hjnpwgemas .gt_from_md > :first-child {
+#oxxevvumbg .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#hjnpwgemas .gt_from_md > :last-child {
+#oxxevvumbg .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#hjnpwgemas .gt_row {
+#oxxevvumbg .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -356,7 +385,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#hjnpwgemas .gt_stub {
+#oxxevvumbg .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -369,7 +398,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#hjnpwgemas .gt_stub_row_group {
+#oxxevvumbg .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -383,15 +412,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#hjnpwgemas .gt_row_group_first td {
+#oxxevvumbg .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#hjnpwgemas .gt_row_group_first th {
+#oxxevvumbg .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#hjnpwgemas .gt_summary_row {
+#oxxevvumbg .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -401,16 +430,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#hjnpwgemas .gt_first_summary_row {
+#oxxevvumbg .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#hjnpwgemas .gt_first_summary_row.thick {
+#oxxevvumbg .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#hjnpwgemas .gt_last_summary_row {
+#oxxevvumbg .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -420,7 +449,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#hjnpwgemas .gt_grand_summary_row {
+#oxxevvumbg .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -430,7 +459,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#hjnpwgemas .gt_first_grand_summary_row {
+#oxxevvumbg .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -440,7 +469,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#hjnpwgemas .gt_last_grand_summary_row_top {
+#oxxevvumbg .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -450,11 +479,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#hjnpwgemas .gt_striped {
+#oxxevvumbg .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#hjnpwgemas .gt_table_body {
+#oxxevvumbg .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -463,7 +492,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#hjnpwgemas .gt_footnotes {
+#oxxevvumbg .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -477,7 +506,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#hjnpwgemas .gt_footnote {
+#oxxevvumbg .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -486,7 +515,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#hjnpwgemas .gt_sourcenotes {
+#oxxevvumbg .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -500,7 +529,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#hjnpwgemas .gt_sourcenote {
+#oxxevvumbg .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -508,63 +537,63 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#hjnpwgemas .gt_left {
+#oxxevvumbg .gt_left {
   text-align: left;
 }
 
-#hjnpwgemas .gt_center {
+#oxxevvumbg .gt_center {
   text-align: center;
 }
 
-#hjnpwgemas .gt_right {
+#oxxevvumbg .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#hjnpwgemas .gt_font_normal {
+#oxxevvumbg .gt_font_normal {
   font-weight: normal;
 }
 
-#hjnpwgemas .gt_font_bold {
+#oxxevvumbg .gt_font_bold {
   font-weight: bold;
 }
 
-#hjnpwgemas .gt_font_italic {
+#oxxevvumbg .gt_font_italic {
   font-style: italic;
 }
 
-#hjnpwgemas .gt_super {
+#oxxevvumbg .gt_super {
   font-size: 65%;
 }
 
-#hjnpwgemas .gt_footnote_marks {
+#oxxevvumbg .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#hjnpwgemas .gt_asterisk {
+#oxxevvumbg .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#hjnpwgemas .gt_indent_1 {
+#oxxevvumbg .gt_indent_1 {
   text-indent: 5px;
 }
 
-#hjnpwgemas .gt_indent_2 {
+#oxxevvumbg .gt_indent_2 {
   text-indent: 10px;
 }
 
-#hjnpwgemas .gt_indent_3 {
+#oxxevvumbg .gt_indent_3 {
   text-indent: 15px;
 }
 
-#hjnpwgemas .gt_indent_4 {
+#oxxevvumbg .gt_indent_4 {
   text-indent: 20px;
 }
 
-#hjnpwgemas .gt_indent_5 {
+#oxxevvumbg .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1588,32 +1617,48 @@ Figure&nbsp;2: Distribution of vaccination history
 <section id="a-is-there-any-association-between-medication-corticosteroids-and-smoking" class="level3">
 <h3 class="anchored" data-anchor-id="a-is-there-any-association-between-medication-corticosteroids-and-smoking">A) Is there any association between medication (Corticosteroids) and smoking?</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>association_data <span class="sc">%&gt;%</span> <span class="fu">select</span>(Corticosteroids,do_you_have_a_previous_history_of_smoking) <span class="sc">%&gt;%</span> </span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl_summary</span>(<span class="at">by=</span>do_you_have_a_previous_history_of_smoking,</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">label=</span><span class="fu">list</span>(do_you_have_a_previous_history_of_smoking<span class="sc">~</span><span class="st">"Smoking status"</span>,</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>                         Corticosteroids<span class="sc">~</span><span class="st">"Corticosteroids (Yes)"</span>))<span class="sc">%&gt;%</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_p</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">modify_header</span>(<span class="at">label =</span> <span class="st">" "</span>) <span class="sc">%&gt;%</span>  <span class="co"># Row variable name</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">modify_spanning_header</span>(<span class="fu">starts_with</span>(<span class="st">"stat_"</span>) <span class="sc">~</span> <span class="st">"**Smoking status**"</span>)  <span class="co"># Column variable name</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to extract chi-square test statistic</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>chisq_test_stat <span class="ot">&lt;-</span> <span class="cf">function</span>(data, variable, by, ...) {</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">chisq.test</span>(<span class="fu">table</span>(data[[variable]], data[[by]])) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  broom<span class="sc">::</span><span class="fu">tidy</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(statistic, p.value)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>association_data <span class="sc">%&gt;%</span> <span class="fu">select</span>(Corticosteroids,do_you_have_a_previous_history_of_smoking) <span class="sc">%&gt;%</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a> <span class="co"># mutate_if(is.numeric,as.factor) %&gt;% </span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl_summary</span>(<span class="at">by=</span>do_you_have_a_previous_history_of_smoking,</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>              <span class="at">label=</span><span class="fu">list</span>(do_you_have_a_previous_history_of_smoking<span class="sc">~</span><span class="st">"Smoking status"</span>,</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>                         Corticosteroids<span class="sc">~</span><span class="st">"Corticosteroids (Yes)"</span>))<span class="sc">%&gt;%</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_stat</span>(<span class="at">fns =</span> <span class="fu">everything</span>() <span class="sc">~</span> chisq_test_stat) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">modify_header</span>(<span class="at">statistic =</span> <span class="st">"**Chi-square**"</span>, <span class="at">p.value =</span> <span class="st">"**p-value**"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_p</span>(<span class="at">pvalue_fun =</span> <span class="sc">~</span> <span class="fu">style_pvalue</span>(.x, <span class="at">digits =</span> <span class="dv">3</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">modify_spanning_header</span>(<span class="fu">starts_with</span>(<span class="st">"stat_"</span>) <span class="sc">~</span> <span class="st">"**Smoking status**"</span>)  <span class="co"># Column variable name</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-tasso_corti" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-tasso_corti-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: Association between smoking status and prevelance of Corticosteroids
+</figcaption>
+<div aria-describedby="tbl-tasso_corti-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
 <div>
-<div id="bkrbzhyexf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#bkrbzhyexf table {
+<div id="rmuyfsmuhq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#rmuyfsmuhq table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#bkrbzhyexf thead, #bkrbzhyexf tbody, #bkrbzhyexf tfoot, #bkrbzhyexf tr, #bkrbzhyexf td, #bkrbzhyexf th {
+#rmuyfsmuhq thead, #rmuyfsmuhq tbody, #rmuyfsmuhq tfoot, #rmuyfsmuhq tr, #rmuyfsmuhq td, #rmuyfsmuhq th {
   border-style: none;
 }
 
-#bkrbzhyexf p {
+#rmuyfsmuhq p {
   margin: 0;
   padding: 0;
 }
 
-#bkrbzhyexf .gt_table {
+#rmuyfsmuhq .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1639,12 +1684,12 @@ Figure&nbsp;2: Distribution of vaccination history
   border-left-color: #D3D3D3;
 }
 
-#bkrbzhyexf .gt_caption {
+#rmuyfsmuhq .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#bkrbzhyexf .gt_title {
+#rmuyfsmuhq .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1656,7 +1701,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-bottom-width: 0;
 }
 
-#bkrbzhyexf .gt_subtitle {
+#rmuyfsmuhq .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1668,7 +1713,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-top-width: 0;
 }
 
-#bkrbzhyexf .gt_heading {
+#rmuyfsmuhq .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1680,13 +1725,13 @@ Figure&nbsp;2: Distribution of vaccination history
   border-right-color: #D3D3D3;
 }
 
-#bkrbzhyexf .gt_bottom_border {
+#rmuyfsmuhq .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#bkrbzhyexf .gt_col_headings {
+#rmuyfsmuhq .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1701,7 +1746,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-right-color: #D3D3D3;
 }
 
-#bkrbzhyexf .gt_col_heading {
+#rmuyfsmuhq .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1721,7 +1766,7 @@ Figure&nbsp;2: Distribution of vaccination history
   overflow-x: hidden;
 }
 
-#bkrbzhyexf .gt_column_spanner_outer {
+#rmuyfsmuhq .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1733,15 +1778,15 @@ Figure&nbsp;2: Distribution of vaccination history
   padding-right: 4px;
 }
 
-#bkrbzhyexf .gt_column_spanner_outer:first-child {
+#rmuyfsmuhq .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#bkrbzhyexf .gt_column_spanner_outer:last-child {
+#rmuyfsmuhq .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#bkrbzhyexf .gt_column_spanner {
+#rmuyfsmuhq .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1753,11 +1798,11 @@ Figure&nbsp;2: Distribution of vaccination history
   width: 100%;
 }
 
-#bkrbzhyexf .gt_spanner_row {
+#rmuyfsmuhq .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#bkrbzhyexf .gt_group_heading {
+#rmuyfsmuhq .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1783,7 +1828,7 @@ Figure&nbsp;2: Distribution of vaccination history
   text-align: left;
 }
 
-#bkrbzhyexf .gt_empty_group_heading {
+#rmuyfsmuhq .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1798,15 +1843,15 @@ Figure&nbsp;2: Distribution of vaccination history
   vertical-align: middle;
 }
 
-#bkrbzhyexf .gt_from_md > :first-child {
+#rmuyfsmuhq .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#bkrbzhyexf .gt_from_md > :last-child {
+#rmuyfsmuhq .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#bkrbzhyexf .gt_row {
+#rmuyfsmuhq .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1825,7 +1870,7 @@ Figure&nbsp;2: Distribution of vaccination history
   overflow-x: hidden;
 }
 
-#bkrbzhyexf .gt_stub {
+#rmuyfsmuhq .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1838,7 +1883,7 @@ Figure&nbsp;2: Distribution of vaccination history
   padding-right: 5px;
 }
 
-#bkrbzhyexf .gt_stub_row_group {
+#rmuyfsmuhq .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1852,15 +1897,15 @@ Figure&nbsp;2: Distribution of vaccination history
   vertical-align: top;
 }
 
-#bkrbzhyexf .gt_row_group_first td {
+#rmuyfsmuhq .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#bkrbzhyexf .gt_row_group_first th {
+#rmuyfsmuhq .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#bkrbzhyexf .gt_summary_row {
+#rmuyfsmuhq .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1870,16 +1915,16 @@ Figure&nbsp;2: Distribution of vaccination history
   padding-right: 5px;
 }
 
-#bkrbzhyexf .gt_first_summary_row {
+#rmuyfsmuhq .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#bkrbzhyexf .gt_first_summary_row.thick {
+#rmuyfsmuhq .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#bkrbzhyexf .gt_last_summary_row {
+#rmuyfsmuhq .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1889,7 +1934,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-bottom-color: #D3D3D3;
 }
 
-#bkrbzhyexf .gt_grand_summary_row {
+#rmuyfsmuhq .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1899,7 +1944,7 @@ Figure&nbsp;2: Distribution of vaccination history
   padding-right: 5px;
 }
 
-#bkrbzhyexf .gt_first_grand_summary_row {
+#rmuyfsmuhq .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1909,7 +1954,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-top-color: #D3D3D3;
 }
 
-#bkrbzhyexf .gt_last_grand_summary_row_top {
+#rmuyfsmuhq .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1919,11 +1964,11 @@ Figure&nbsp;2: Distribution of vaccination history
   border-bottom-color: #D3D3D3;
 }
 
-#bkrbzhyexf .gt_striped {
+#rmuyfsmuhq .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#bkrbzhyexf .gt_table_body {
+#rmuyfsmuhq .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1932,7 +1977,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-bottom-color: #D3D3D3;
 }
 
-#bkrbzhyexf .gt_footnotes {
+#rmuyfsmuhq .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1946,7 +1991,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-right-color: #D3D3D3;
 }
 
-#bkrbzhyexf .gt_footnote {
+#rmuyfsmuhq .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1955,7 +2000,7 @@ Figure&nbsp;2: Distribution of vaccination history
   padding-right: 5px;
 }
 
-#bkrbzhyexf .gt_sourcenotes {
+#rmuyfsmuhq .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1969,7 +2014,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-right-color: #D3D3D3;
 }
 
-#bkrbzhyexf .gt_sourcenote {
+#rmuyfsmuhq .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1977,72 +2022,73 @@ Figure&nbsp;2: Distribution of vaccination history
   padding-right: 5px;
 }
 
-#bkrbzhyexf .gt_left {
+#rmuyfsmuhq .gt_left {
   text-align: left;
 }
 
-#bkrbzhyexf .gt_center {
+#rmuyfsmuhq .gt_center {
   text-align: center;
 }
 
-#bkrbzhyexf .gt_right {
+#rmuyfsmuhq .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#bkrbzhyexf .gt_font_normal {
+#rmuyfsmuhq .gt_font_normal {
   font-weight: normal;
 }
 
-#bkrbzhyexf .gt_font_bold {
+#rmuyfsmuhq .gt_font_bold {
   font-weight: bold;
 }
 
-#bkrbzhyexf .gt_font_italic {
+#rmuyfsmuhq .gt_font_italic {
   font-style: italic;
 }
 
-#bkrbzhyexf .gt_super {
+#rmuyfsmuhq .gt_super {
   font-size: 65%;
 }
 
-#bkrbzhyexf .gt_footnote_marks {
+#rmuyfsmuhq .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#bkrbzhyexf .gt_asterisk {
+#rmuyfsmuhq .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#bkrbzhyexf .gt_indent_1 {
+#rmuyfsmuhq .gt_indent_1 {
   text-indent: 5px;
 }
 
-#bkrbzhyexf .gt_indent_2 {
+#rmuyfsmuhq .gt_indent_2 {
   text-indent: 10px;
 }
 
-#bkrbzhyexf .gt_indent_3 {
+#rmuyfsmuhq .gt_indent_3 {
   text-indent: 15px;
 }
 
-#bkrbzhyexf .gt_indent_4 {
+#rmuyfsmuhq .gt_indent_4 {
   text-indent: 20px;
 }
 
-#bkrbzhyexf .gt_indent_5 {
+#rmuyfsmuhq .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
 
-<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table do-not-create-environment cell table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <thead>
 <tr class="header gt_col_headings gt_spanner_row">
-<th rowspan="2" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"></th>
+<th rowspan="2" id="<strong>Characteristic</strong>" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>Characteristic</strong></th>
 <th colspan="3" id="<strong>Smoking status</strong>" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" scope="colgroup"><span class="gt_column_spanner"><strong>Smoking status</strong></span></th>
+<th rowspan="2" id="<strong>Chi-square</strong>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>Chi-square</strong></th>
 <th rowspan="2" id="<strong>p-value</strong><span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>2</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>p-value</strong><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span></th>
 </tr>
 <tr class="odd gt_col_headings">
@@ -2057,14 +2103,15 @@ Figure&nbsp;2: Distribution of vaccination history
 <td class="gt_row gt_center" headers="stat_1">33 (28%)</td>
 <td class="gt_row gt_center" headers="stat_2">30 (41%)</td>
 <td class="gt_row gt_center" headers="stat_3">18 (31%)</td>
-<td class="gt_row gt_center" headers="p.value">0.2</td>
+<td class="gt_row gt_center" headers="statistic">3.68</td>
+<td class="gt_row gt_center" headers="p.value">0.159</td>
 </tr>
 </tbody><tfoot class="gt_footnotes">
 <tr class="odd">
-<td colspan="5" class="gt_footnote"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span> n (%)</td>
+<td colspan="6" class="gt_footnote"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span> n (%)</td>
 </tr>
 <tr class="even">
-<td colspan="5" class="gt_footnote"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span> Pearson’s Chi-squared test</td>
+<td colspan="6" class="gt_footnote"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span> Pearson’s Chi-squared test</td>
 </tr>
 </tfoot>
 
@@ -2074,6 +2121,10 @@ Figure&nbsp;2: Distribution of vaccination history
 </div>
 </div>
 </div>
+</figure>
+</div>
+</div>
+<p>The prevalence of <em>Corticosteroids</em> was the most in group of participants/ patients who previously smoke (41%), followed by the participants who still smoking (31%) and who did not smoke (28%). But the proportions of prevalence of <em>Corticosteroids</em> are not significantly different among the groups, <span class="math inline">\(\chi^2=3.68\)</span>, p-value=0.159 (<a href="#tbl-tasso_corti" class="quarto-xref">Table&nbsp;2</a>).</p>
 </section>
 <section id="b-is-there-any-association-between-medication-oxygen-therapy-and-smoking" class="level3">
 <h3 class="anchored" data-anchor-id="b-is-there-any-association-between-medication-oxygen-therapy-and-smoking">B) Is there any association between medication (Oxygen therapy) and smoking?</h3>
@@ -2082,28 +2133,29 @@ Figure&nbsp;2: Distribution of vaccination history
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl_summary</span>(<span class="at">by=</span>do_you_have_a_previous_history_of_smoking,</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">label=</span><span class="fu">list</span>(do_you_have_a_previous_history_of_smoking<span class="sc">~</span><span class="st">"Smoking status"</span>,</span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                         <span class="st">`</span><span class="at">Oxygen therapy</span><span class="st">`</span><span class="sc">~</span><span class="st">"Oxygen therapy (Yes)"</span>))<span class="sc">%&gt;%</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_p</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">modify_header</span>(<span class="at">label =</span> <span class="st">" "</span>) <span class="sc">%&gt;%</span>  <span class="co"># Row variable name</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">modify_spanning_header</span>(<span class="fu">starts_with</span>(<span class="st">"stat_"</span>) <span class="sc">~</span> <span class="st">"**Smoking status**"</span>)  <span class="co"># Column variable name</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_stat</span>(<span class="at">fns =</span> <span class="fu">everything</span>() <span class="sc">~</span> chisq_test_stat) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">modify_header</span>(<span class="at">statistic =</span> <span class="st">"**Chi-square**"</span>, <span class="at">p.value =</span> <span class="st">"**p-value**"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_p</span>(<span class="at">pvalue_fun =</span> <span class="sc">~</span> <span class="fu">style_pvalue</span>(.x, <span class="at">digits =</span> <span class="dv">3</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">modify_spanning_header</span>(<span class="fu">starts_with</span>(<span class="st">"stat_"</span>) <span class="sc">~</span> <span class="st">"**Smoking status**"</span>)  <span class="co"># Column variable name</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<div id="ubbzgqlnfj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ubbzgqlnfj table {
+<div id="kdqegktpic" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#kdqegktpic table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ubbzgqlnfj thead, #ubbzgqlnfj tbody, #ubbzgqlnfj tfoot, #ubbzgqlnfj tr, #ubbzgqlnfj td, #ubbzgqlnfj th {
+#kdqegktpic thead, #kdqegktpic tbody, #kdqegktpic tfoot, #kdqegktpic tr, #kdqegktpic td, #kdqegktpic th {
   border-style: none;
 }
 
-#ubbzgqlnfj p {
+#kdqegktpic p {
   margin: 0;
   padding: 0;
 }
 
-#ubbzgqlnfj .gt_table {
+#kdqegktpic .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2129,12 +2181,12 @@ Figure&nbsp;2: Distribution of vaccination history
   border-left-color: #D3D3D3;
 }
 
-#ubbzgqlnfj .gt_caption {
+#kdqegktpic .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ubbzgqlnfj .gt_title {
+#kdqegktpic .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2146,7 +2198,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-bottom-width: 0;
 }
 
-#ubbzgqlnfj .gt_subtitle {
+#kdqegktpic .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2158,7 +2210,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-top-width: 0;
 }
 
-#ubbzgqlnfj .gt_heading {
+#kdqegktpic .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2170,13 +2222,13 @@ Figure&nbsp;2: Distribution of vaccination history
   border-right-color: #D3D3D3;
 }
 
-#ubbzgqlnfj .gt_bottom_border {
+#kdqegktpic .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ubbzgqlnfj .gt_col_headings {
+#kdqegktpic .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2191,7 +2243,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-right-color: #D3D3D3;
 }
 
-#ubbzgqlnfj .gt_col_heading {
+#kdqegktpic .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2211,7 +2263,7 @@ Figure&nbsp;2: Distribution of vaccination history
   overflow-x: hidden;
 }
 
-#ubbzgqlnfj .gt_column_spanner_outer {
+#kdqegktpic .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2223,15 +2275,15 @@ Figure&nbsp;2: Distribution of vaccination history
   padding-right: 4px;
 }
 
-#ubbzgqlnfj .gt_column_spanner_outer:first-child {
+#kdqegktpic .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ubbzgqlnfj .gt_column_spanner_outer:last-child {
+#kdqegktpic .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ubbzgqlnfj .gt_column_spanner {
+#kdqegktpic .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2243,11 +2295,11 @@ Figure&nbsp;2: Distribution of vaccination history
   width: 100%;
 }
 
-#ubbzgqlnfj .gt_spanner_row {
+#kdqegktpic .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ubbzgqlnfj .gt_group_heading {
+#kdqegktpic .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2273,7 +2325,7 @@ Figure&nbsp;2: Distribution of vaccination history
   text-align: left;
 }
 
-#ubbzgqlnfj .gt_empty_group_heading {
+#kdqegktpic .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2288,15 +2340,15 @@ Figure&nbsp;2: Distribution of vaccination history
   vertical-align: middle;
 }
 
-#ubbzgqlnfj .gt_from_md > :first-child {
+#kdqegktpic .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ubbzgqlnfj .gt_from_md > :last-child {
+#kdqegktpic .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ubbzgqlnfj .gt_row {
+#kdqegktpic .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2315,7 +2367,7 @@ Figure&nbsp;2: Distribution of vaccination history
   overflow-x: hidden;
 }
 
-#ubbzgqlnfj .gt_stub {
+#kdqegktpic .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2328,7 +2380,7 @@ Figure&nbsp;2: Distribution of vaccination history
   padding-right: 5px;
 }
 
-#ubbzgqlnfj .gt_stub_row_group {
+#kdqegktpic .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2342,15 +2394,15 @@ Figure&nbsp;2: Distribution of vaccination history
   vertical-align: top;
 }
 
-#ubbzgqlnfj .gt_row_group_first td {
+#kdqegktpic .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ubbzgqlnfj .gt_row_group_first th {
+#kdqegktpic .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ubbzgqlnfj .gt_summary_row {
+#kdqegktpic .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2360,16 +2412,16 @@ Figure&nbsp;2: Distribution of vaccination history
   padding-right: 5px;
 }
 
-#ubbzgqlnfj .gt_first_summary_row {
+#kdqegktpic .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ubbzgqlnfj .gt_first_summary_row.thick {
+#kdqegktpic .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ubbzgqlnfj .gt_last_summary_row {
+#kdqegktpic .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2379,7 +2431,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-bottom-color: #D3D3D3;
 }
 
-#ubbzgqlnfj .gt_grand_summary_row {
+#kdqegktpic .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2389,7 +2441,7 @@ Figure&nbsp;2: Distribution of vaccination history
   padding-right: 5px;
 }
 
-#ubbzgqlnfj .gt_first_grand_summary_row {
+#kdqegktpic .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2399,7 +2451,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-top-color: #D3D3D3;
 }
 
-#ubbzgqlnfj .gt_last_grand_summary_row_top {
+#kdqegktpic .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2409,11 +2461,11 @@ Figure&nbsp;2: Distribution of vaccination history
   border-bottom-color: #D3D3D3;
 }
 
-#ubbzgqlnfj .gt_striped {
+#kdqegktpic .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ubbzgqlnfj .gt_table_body {
+#kdqegktpic .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2422,7 +2474,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-bottom-color: #D3D3D3;
 }
 
-#ubbzgqlnfj .gt_footnotes {
+#kdqegktpic .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2436,7 +2488,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-right-color: #D3D3D3;
 }
 
-#ubbzgqlnfj .gt_footnote {
+#kdqegktpic .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2445,7 +2497,7 @@ Figure&nbsp;2: Distribution of vaccination history
   padding-right: 5px;
 }
 
-#ubbzgqlnfj .gt_sourcenotes {
+#kdqegktpic .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2459,7 +2511,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-right-color: #D3D3D3;
 }
 
-#ubbzgqlnfj .gt_sourcenote {
+#kdqegktpic .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2467,63 +2519,63 @@ Figure&nbsp;2: Distribution of vaccination history
   padding-right: 5px;
 }
 
-#ubbzgqlnfj .gt_left {
+#kdqegktpic .gt_left {
   text-align: left;
 }
 
-#ubbzgqlnfj .gt_center {
+#kdqegktpic .gt_center {
   text-align: center;
 }
 
-#ubbzgqlnfj .gt_right {
+#kdqegktpic .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ubbzgqlnfj .gt_font_normal {
+#kdqegktpic .gt_font_normal {
   font-weight: normal;
 }
 
-#ubbzgqlnfj .gt_font_bold {
+#kdqegktpic .gt_font_bold {
   font-weight: bold;
 }
 
-#ubbzgqlnfj .gt_font_italic {
+#kdqegktpic .gt_font_italic {
   font-style: italic;
 }
 
-#ubbzgqlnfj .gt_super {
+#kdqegktpic .gt_super {
   font-size: 65%;
 }
 
-#ubbzgqlnfj .gt_footnote_marks {
+#kdqegktpic .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ubbzgqlnfj .gt_asterisk {
+#kdqegktpic .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ubbzgqlnfj .gt_indent_1 {
+#kdqegktpic .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ubbzgqlnfj .gt_indent_2 {
+#kdqegktpic .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ubbzgqlnfj .gt_indent_3 {
+#kdqegktpic .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ubbzgqlnfj .gt_indent_4 {
+#kdqegktpic .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ubbzgqlnfj .gt_indent_5 {
+#kdqegktpic .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2531,8 +2583,9 @@ Figure&nbsp;2: Distribution of vaccination history
 <table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <thead>
 <tr class="header gt_col_headings gt_spanner_row">
-<th rowspan="2" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"></th>
+<th rowspan="2" id="<strong>Characteristic</strong>" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>Characteristic</strong></th>
 <th colspan="3" id="<strong>Smoking status</strong>" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" scope="colgroup"><span class="gt_column_spanner"><strong>Smoking status</strong></span></th>
+<th rowspan="2" id="<strong>Chi-square</strong>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>Chi-square</strong></th>
 <th rowspan="2" id="<strong>p-value</strong><span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>2</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>p-value</strong><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span></th>
 </tr>
 <tr class="odd gt_col_headings">
@@ -2547,14 +2600,15 @@ Figure&nbsp;2: Distribution of vaccination history
 <td class="gt_row gt_center" headers="stat_1">27 (23%)</td>
 <td class="gt_row gt_center" headers="stat_2">14 (19%)</td>
 <td class="gt_row gt_center" headers="stat_3">14 (24%)</td>
-<td class="gt_row gt_center" headers="p.value">0.8</td>
+<td class="gt_row gt_center" headers="statistic">0.495</td>
+<td class="gt_row gt_center" headers="p.value">0.781</td>
 </tr>
 </tbody><tfoot class="gt_footnotes">
 <tr class="odd">
-<td colspan="5" class="gt_footnote"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span> n (%)</td>
+<td colspan="6" class="gt_footnote"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span> n (%)</td>
 </tr>
 <tr class="even">
-<td colspan="5" class="gt_footnote"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span> Pearson’s Chi-squared test</td>
+<td colspan="6" class="gt_footnote"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span> Pearson’s Chi-squared test</td>
 </tr>
 </tfoot>
 
@@ -2564,6 +2618,7 @@ Figure&nbsp;2: Distribution of vaccination history
 </div>
 </div>
 </div>
+<p><em>Please describe same as <a href="#tbl-tasso_corti" class="quarto-xref">Table&nbsp;2</a>.</em></p>
 </section>
 <section id="c-is-there-any-association-between-medication-bronchodilators-and-smoking" class="level3">
 <h3 class="anchored" data-anchor-id="c-is-there-any-association-between-medication-bronchodilators-and-smoking">C) Is there any association between medication (Bronchodilators) and smoking?</h3>
@@ -2573,28 +2628,29 @@ Figure&nbsp;2: Distribution of vaccination history
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl_summary</span>(<span class="at">by=</span>do_you_have_a_previous_history_of_smoking,</span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">label=</span><span class="fu">list</span>(do_you_have_a_previous_history_of_smoking<span class="sc">~</span><span class="st">"Smoking status"</span>,</span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>                         Bronchodilators<span class="sc">~</span><span class="st">"Bronchodilators (Yes)"</span>))<span class="sc">%&gt;%</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_p</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">modify_header</span>(<span class="at">label =</span> <span class="st">" "</span>) <span class="sc">%&gt;%</span>  <span class="co"># Row variable name</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">modify_spanning_header</span>(<span class="fu">starts_with</span>(<span class="st">"stat_"</span>) <span class="sc">~</span> <span class="st">"**Smoking status**"</span>)  <span class="co"># Column variable name</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_stat</span>(<span class="at">fns =</span> <span class="fu">everything</span>() <span class="sc">~</span> chisq_test_stat) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">modify_header</span>(<span class="at">statistic =</span> <span class="st">"**Chi-square**"</span>, <span class="at">p.value =</span> <span class="st">"**p-value**"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_p</span>(<span class="at">pvalue_fun =</span> <span class="sc">~</span> <span class="fu">style_pvalue</span>(.x, <span class="at">digits =</span> <span class="dv">3</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">modify_spanning_header</span>(<span class="fu">starts_with</span>(<span class="st">"stat_"</span>) <span class="sc">~</span> <span class="st">"**Smoking status**"</span>)  <span class="co"># Column variable name</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<div id="kxavexunjr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#kxavexunjr table {
+<div id="oplcfdyglv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#oplcfdyglv table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#kxavexunjr thead, #kxavexunjr tbody, #kxavexunjr tfoot, #kxavexunjr tr, #kxavexunjr td, #kxavexunjr th {
+#oplcfdyglv thead, #oplcfdyglv tbody, #oplcfdyglv tfoot, #oplcfdyglv tr, #oplcfdyglv td, #oplcfdyglv th {
   border-style: none;
 }
 
-#kxavexunjr p {
+#oplcfdyglv p {
   margin: 0;
   padding: 0;
 }
 
-#kxavexunjr .gt_table {
+#oplcfdyglv .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2620,12 +2676,12 @@ Figure&nbsp;2: Distribution of vaccination history
   border-left-color: #D3D3D3;
 }
 
-#kxavexunjr .gt_caption {
+#oplcfdyglv .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#kxavexunjr .gt_title {
+#oplcfdyglv .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2637,7 +2693,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-bottom-width: 0;
 }
 
-#kxavexunjr .gt_subtitle {
+#oplcfdyglv .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2649,7 +2705,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-top-width: 0;
 }
 
-#kxavexunjr .gt_heading {
+#oplcfdyglv .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2661,13 +2717,13 @@ Figure&nbsp;2: Distribution of vaccination history
   border-right-color: #D3D3D3;
 }
 
-#kxavexunjr .gt_bottom_border {
+#oplcfdyglv .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#kxavexunjr .gt_col_headings {
+#oplcfdyglv .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2682,7 +2738,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-right-color: #D3D3D3;
 }
 
-#kxavexunjr .gt_col_heading {
+#oplcfdyglv .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2702,7 +2758,7 @@ Figure&nbsp;2: Distribution of vaccination history
   overflow-x: hidden;
 }
 
-#kxavexunjr .gt_column_spanner_outer {
+#oplcfdyglv .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2714,15 +2770,15 @@ Figure&nbsp;2: Distribution of vaccination history
   padding-right: 4px;
 }
 
-#kxavexunjr .gt_column_spanner_outer:first-child {
+#oplcfdyglv .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#kxavexunjr .gt_column_spanner_outer:last-child {
+#oplcfdyglv .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#kxavexunjr .gt_column_spanner {
+#oplcfdyglv .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2734,11 +2790,11 @@ Figure&nbsp;2: Distribution of vaccination history
   width: 100%;
 }
 
-#kxavexunjr .gt_spanner_row {
+#oplcfdyglv .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#kxavexunjr .gt_group_heading {
+#oplcfdyglv .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2764,7 +2820,7 @@ Figure&nbsp;2: Distribution of vaccination history
   text-align: left;
 }
 
-#kxavexunjr .gt_empty_group_heading {
+#oplcfdyglv .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2779,15 +2835,15 @@ Figure&nbsp;2: Distribution of vaccination history
   vertical-align: middle;
 }
 
-#kxavexunjr .gt_from_md > :first-child {
+#oplcfdyglv .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#kxavexunjr .gt_from_md > :last-child {
+#oplcfdyglv .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#kxavexunjr .gt_row {
+#oplcfdyglv .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2806,7 +2862,7 @@ Figure&nbsp;2: Distribution of vaccination history
   overflow-x: hidden;
 }
 
-#kxavexunjr .gt_stub {
+#oplcfdyglv .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2819,7 +2875,7 @@ Figure&nbsp;2: Distribution of vaccination history
   padding-right: 5px;
 }
 
-#kxavexunjr .gt_stub_row_group {
+#oplcfdyglv .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2833,15 +2889,15 @@ Figure&nbsp;2: Distribution of vaccination history
   vertical-align: top;
 }
 
-#kxavexunjr .gt_row_group_first td {
+#oplcfdyglv .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#kxavexunjr .gt_row_group_first th {
+#oplcfdyglv .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#kxavexunjr .gt_summary_row {
+#oplcfdyglv .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2851,16 +2907,16 @@ Figure&nbsp;2: Distribution of vaccination history
   padding-right: 5px;
 }
 
-#kxavexunjr .gt_first_summary_row {
+#oplcfdyglv .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#kxavexunjr .gt_first_summary_row.thick {
+#oplcfdyglv .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#kxavexunjr .gt_last_summary_row {
+#oplcfdyglv .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2870,7 +2926,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-bottom-color: #D3D3D3;
 }
 
-#kxavexunjr .gt_grand_summary_row {
+#oplcfdyglv .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2880,7 +2936,7 @@ Figure&nbsp;2: Distribution of vaccination history
   padding-right: 5px;
 }
 
-#kxavexunjr .gt_first_grand_summary_row {
+#oplcfdyglv .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2890,7 +2946,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-top-color: #D3D3D3;
 }
 
-#kxavexunjr .gt_last_grand_summary_row_top {
+#oplcfdyglv .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2900,11 +2956,11 @@ Figure&nbsp;2: Distribution of vaccination history
   border-bottom-color: #D3D3D3;
 }
 
-#kxavexunjr .gt_striped {
+#oplcfdyglv .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#kxavexunjr .gt_table_body {
+#oplcfdyglv .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2913,7 +2969,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-bottom-color: #D3D3D3;
 }
 
-#kxavexunjr .gt_footnotes {
+#oplcfdyglv .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2927,7 +2983,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-right-color: #D3D3D3;
 }
 
-#kxavexunjr .gt_footnote {
+#oplcfdyglv .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2936,7 +2992,7 @@ Figure&nbsp;2: Distribution of vaccination history
   padding-right: 5px;
 }
 
-#kxavexunjr .gt_sourcenotes {
+#oplcfdyglv .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2950,7 +3006,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-right-color: #D3D3D3;
 }
 
-#kxavexunjr .gt_sourcenote {
+#oplcfdyglv .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2958,63 +3014,63 @@ Figure&nbsp;2: Distribution of vaccination history
   padding-right: 5px;
 }
 
-#kxavexunjr .gt_left {
+#oplcfdyglv .gt_left {
   text-align: left;
 }
 
-#kxavexunjr .gt_center {
+#oplcfdyglv .gt_center {
   text-align: center;
 }
 
-#kxavexunjr .gt_right {
+#oplcfdyglv .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#kxavexunjr .gt_font_normal {
+#oplcfdyglv .gt_font_normal {
   font-weight: normal;
 }
 
-#kxavexunjr .gt_font_bold {
+#oplcfdyglv .gt_font_bold {
   font-weight: bold;
 }
 
-#kxavexunjr .gt_font_italic {
+#oplcfdyglv .gt_font_italic {
   font-style: italic;
 }
 
-#kxavexunjr .gt_super {
+#oplcfdyglv .gt_super {
   font-size: 65%;
 }
 
-#kxavexunjr .gt_footnote_marks {
+#oplcfdyglv .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#kxavexunjr .gt_asterisk {
+#oplcfdyglv .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#kxavexunjr .gt_indent_1 {
+#oplcfdyglv .gt_indent_1 {
   text-indent: 5px;
 }
 
-#kxavexunjr .gt_indent_2 {
+#oplcfdyglv .gt_indent_2 {
   text-indent: 10px;
 }
 
-#kxavexunjr .gt_indent_3 {
+#oplcfdyglv .gt_indent_3 {
   text-indent: 15px;
 }
 
-#kxavexunjr .gt_indent_4 {
+#oplcfdyglv .gt_indent_4 {
   text-indent: 20px;
 }
 
-#kxavexunjr .gt_indent_5 {
+#oplcfdyglv .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -3022,8 +3078,9 @@ Figure&nbsp;2: Distribution of vaccination history
 <table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <thead>
 <tr class="header gt_col_headings gt_spanner_row">
-<th rowspan="2" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"></th>
+<th rowspan="2" id="<strong>Characteristic</strong>" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>Characteristic</strong></th>
 <th colspan="3" id="<strong>Smoking status</strong>" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" scope="colgroup"><span class="gt_column_spanner"><strong>Smoking status</strong></span></th>
+<th rowspan="2" id="<strong>Chi-square</strong>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>Chi-square</strong></th>
 <th rowspan="2" id="<strong>p-value</strong><span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>2</sup></span>" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>p-value</strong><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span></th>
 </tr>
 <tr class="odd gt_col_headings">
@@ -3038,14 +3095,15 @@ Figure&nbsp;2: Distribution of vaccination history
 <td class="gt_row gt_center" headers="stat_1">19 (16%)</td>
 <td class="gt_row gt_center" headers="stat_2">16 (22%)</td>
 <td class="gt_row gt_center" headers="stat_3">12 (20%)</td>
-<td class="gt_row gt_center" headers="p.value">0.6</td>
+<td class="gt_row gt_center" headers="statistic">1.12</td>
+<td class="gt_row gt_center" headers="p.value">0.571</td>
 </tr>
 </tbody><tfoot class="gt_footnotes">
 <tr class="odd">
-<td colspan="5" class="gt_footnote"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span> n (%)</td>
+<td colspan="6" class="gt_footnote"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span> n (%)</td>
 </tr>
 <tr class="even">
-<td colspan="5" class="gt_footnote"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span> Pearson’s Chi-squared test</td>
+<td colspan="6" class="gt_footnote"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>2</sup></span> Pearson’s Chi-squared test</td>
 </tr>
 </tfoot>
 
@@ -3220,23 +3278,23 @@ Figure&nbsp;2: Distribution of vaccination history
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>Survey[,<span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>] <span class="sc">%&gt;%</span> <span class="fu">tbl_summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<div id="ceqrivomgp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ceqrivomgp table {
+<div id="stpbgpwbgj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#stpbgpwbgj table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ceqrivomgp thead, #ceqrivomgp tbody, #ceqrivomgp tfoot, #ceqrivomgp tr, #ceqrivomgp td, #ceqrivomgp th {
+#stpbgpwbgj thead, #stpbgpwbgj tbody, #stpbgpwbgj tfoot, #stpbgpwbgj tr, #stpbgpwbgj td, #stpbgpwbgj th {
   border-style: none;
 }
 
-#ceqrivomgp p {
+#stpbgpwbgj p {
   margin: 0;
   padding: 0;
 }
 
-#ceqrivomgp .gt_table {
+#stpbgpwbgj .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3262,12 +3320,12 @@ Figure&nbsp;2: Distribution of vaccination history
   border-left-color: #D3D3D3;
 }
 
-#ceqrivomgp .gt_caption {
+#stpbgpwbgj .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ceqrivomgp .gt_title {
+#stpbgpwbgj .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3279,7 +3337,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-bottom-width: 0;
 }
 
-#ceqrivomgp .gt_subtitle {
+#stpbgpwbgj .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3291,7 +3349,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-top-width: 0;
 }
 
-#ceqrivomgp .gt_heading {
+#stpbgpwbgj .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3303,13 +3361,13 @@ Figure&nbsp;2: Distribution of vaccination history
   border-right-color: #D3D3D3;
 }
 
-#ceqrivomgp .gt_bottom_border {
+#stpbgpwbgj .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ceqrivomgp .gt_col_headings {
+#stpbgpwbgj .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3324,7 +3382,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-right-color: #D3D3D3;
 }
 
-#ceqrivomgp .gt_col_heading {
+#stpbgpwbgj .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3344,7 +3402,7 @@ Figure&nbsp;2: Distribution of vaccination history
   overflow-x: hidden;
 }
 
-#ceqrivomgp .gt_column_spanner_outer {
+#stpbgpwbgj .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3356,15 +3414,15 @@ Figure&nbsp;2: Distribution of vaccination history
   padding-right: 4px;
 }
 
-#ceqrivomgp .gt_column_spanner_outer:first-child {
+#stpbgpwbgj .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ceqrivomgp .gt_column_spanner_outer:last-child {
+#stpbgpwbgj .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ceqrivomgp .gt_column_spanner {
+#stpbgpwbgj .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3376,11 +3434,11 @@ Figure&nbsp;2: Distribution of vaccination history
   width: 100%;
 }
 
-#ceqrivomgp .gt_spanner_row {
+#stpbgpwbgj .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ceqrivomgp .gt_group_heading {
+#stpbgpwbgj .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3406,7 +3464,7 @@ Figure&nbsp;2: Distribution of vaccination history
   text-align: left;
 }
 
-#ceqrivomgp .gt_empty_group_heading {
+#stpbgpwbgj .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3421,15 +3479,15 @@ Figure&nbsp;2: Distribution of vaccination history
   vertical-align: middle;
 }
 
-#ceqrivomgp .gt_from_md > :first-child {
+#stpbgpwbgj .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ceqrivomgp .gt_from_md > :last-child {
+#stpbgpwbgj .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ceqrivomgp .gt_row {
+#stpbgpwbgj .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3448,7 +3506,7 @@ Figure&nbsp;2: Distribution of vaccination history
   overflow-x: hidden;
 }
 
-#ceqrivomgp .gt_stub {
+#stpbgpwbgj .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3461,7 +3519,7 @@ Figure&nbsp;2: Distribution of vaccination history
   padding-right: 5px;
 }
 
-#ceqrivomgp .gt_stub_row_group {
+#stpbgpwbgj .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3475,15 +3533,15 @@ Figure&nbsp;2: Distribution of vaccination history
   vertical-align: top;
 }
 
-#ceqrivomgp .gt_row_group_first td {
+#stpbgpwbgj .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ceqrivomgp .gt_row_group_first th {
+#stpbgpwbgj .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ceqrivomgp .gt_summary_row {
+#stpbgpwbgj .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3493,16 +3551,16 @@ Figure&nbsp;2: Distribution of vaccination history
   padding-right: 5px;
 }
 
-#ceqrivomgp .gt_first_summary_row {
+#stpbgpwbgj .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ceqrivomgp .gt_first_summary_row.thick {
+#stpbgpwbgj .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ceqrivomgp .gt_last_summary_row {
+#stpbgpwbgj .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3512,7 +3570,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-bottom-color: #D3D3D3;
 }
 
-#ceqrivomgp .gt_grand_summary_row {
+#stpbgpwbgj .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3522,7 +3580,7 @@ Figure&nbsp;2: Distribution of vaccination history
   padding-right: 5px;
 }
 
-#ceqrivomgp .gt_first_grand_summary_row {
+#stpbgpwbgj .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3532,7 +3590,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-top-color: #D3D3D3;
 }
 
-#ceqrivomgp .gt_last_grand_summary_row_top {
+#stpbgpwbgj .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3542,11 +3600,11 @@ Figure&nbsp;2: Distribution of vaccination history
   border-bottom-color: #D3D3D3;
 }
 
-#ceqrivomgp .gt_striped {
+#stpbgpwbgj .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ceqrivomgp .gt_table_body {
+#stpbgpwbgj .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3555,7 +3613,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-bottom-color: #D3D3D3;
 }
 
-#ceqrivomgp .gt_footnotes {
+#stpbgpwbgj .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3569,7 +3627,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-right-color: #D3D3D3;
 }
 
-#ceqrivomgp .gt_footnote {
+#stpbgpwbgj .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3578,7 +3636,7 @@ Figure&nbsp;2: Distribution of vaccination history
   padding-right: 5px;
 }
 
-#ceqrivomgp .gt_sourcenotes {
+#stpbgpwbgj .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3592,7 +3650,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-right-color: #D3D3D3;
 }
 
-#ceqrivomgp .gt_sourcenote {
+#stpbgpwbgj .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3600,63 +3658,63 @@ Figure&nbsp;2: Distribution of vaccination history
   padding-right: 5px;
 }
 
-#ceqrivomgp .gt_left {
+#stpbgpwbgj .gt_left {
   text-align: left;
 }
 
-#ceqrivomgp .gt_center {
+#stpbgpwbgj .gt_center {
   text-align: center;
 }
 
-#ceqrivomgp .gt_right {
+#stpbgpwbgj .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ceqrivomgp .gt_font_normal {
+#stpbgpwbgj .gt_font_normal {
   font-weight: normal;
 }
 
-#ceqrivomgp .gt_font_bold {
+#stpbgpwbgj .gt_font_bold {
   font-weight: bold;
 }
 
-#ceqrivomgp .gt_font_italic {
+#stpbgpwbgj .gt_font_italic {
   font-style: italic;
 }
 
-#ceqrivomgp .gt_super {
+#stpbgpwbgj .gt_super {
   font-size: 65%;
 }
 
-#ceqrivomgp .gt_footnote_marks {
+#stpbgpwbgj .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ceqrivomgp .gt_asterisk {
+#stpbgpwbgj .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ceqrivomgp .gt_indent_1 {
+#stpbgpwbgj .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ceqrivomgp .gt_indent_2 {
+#stpbgpwbgj .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ceqrivomgp .gt_indent_3 {
+#stpbgpwbgj .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ceqrivomgp .gt_indent_4 {
+#stpbgpwbgj .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ceqrivomgp .gt_indent_5 {
+#stpbgpwbgj .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -4153,23 +4211,23 @@ Figure&nbsp;2: Distribution of vaccination history
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl_summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<div id="febrqdgipm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#febrqdgipm table {
+<div id="lfptoparhs" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#lfptoparhs table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#febrqdgipm thead, #febrqdgipm tbody, #febrqdgipm tfoot, #febrqdgipm tr, #febrqdgipm td, #febrqdgipm th {
+#lfptoparhs thead, #lfptoparhs tbody, #lfptoparhs tfoot, #lfptoparhs tr, #lfptoparhs td, #lfptoparhs th {
   border-style: none;
 }
 
-#febrqdgipm p {
+#lfptoparhs p {
   margin: 0;
   padding: 0;
 }
 
-#febrqdgipm .gt_table {
+#lfptoparhs .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -4195,12 +4253,12 @@ Figure&nbsp;2: Distribution of vaccination history
   border-left-color: #D3D3D3;
 }
 
-#febrqdgipm .gt_caption {
+#lfptoparhs .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#febrqdgipm .gt_title {
+#lfptoparhs .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -4212,7 +4270,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-bottom-width: 0;
 }
 
-#febrqdgipm .gt_subtitle {
+#lfptoparhs .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -4224,7 +4282,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-top-width: 0;
 }
 
-#febrqdgipm .gt_heading {
+#lfptoparhs .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -4236,13 +4294,13 @@ Figure&nbsp;2: Distribution of vaccination history
   border-right-color: #D3D3D3;
 }
 
-#febrqdgipm .gt_bottom_border {
+#lfptoparhs .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#febrqdgipm .gt_col_headings {
+#lfptoparhs .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4257,7 +4315,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-right-color: #D3D3D3;
 }
 
-#febrqdgipm .gt_col_heading {
+#lfptoparhs .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4277,7 +4335,7 @@ Figure&nbsp;2: Distribution of vaccination history
   overflow-x: hidden;
 }
 
-#febrqdgipm .gt_column_spanner_outer {
+#lfptoparhs .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4289,15 +4347,15 @@ Figure&nbsp;2: Distribution of vaccination history
   padding-right: 4px;
 }
 
-#febrqdgipm .gt_column_spanner_outer:first-child {
+#lfptoparhs .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#febrqdgipm .gt_column_spanner_outer:last-child {
+#lfptoparhs .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#febrqdgipm .gt_column_spanner {
+#lfptoparhs .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -4309,11 +4367,11 @@ Figure&nbsp;2: Distribution of vaccination history
   width: 100%;
 }
 
-#febrqdgipm .gt_spanner_row {
+#lfptoparhs .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#febrqdgipm .gt_group_heading {
+#lfptoparhs .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4339,7 +4397,7 @@ Figure&nbsp;2: Distribution of vaccination history
   text-align: left;
 }
 
-#febrqdgipm .gt_empty_group_heading {
+#lfptoparhs .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -4354,15 +4412,15 @@ Figure&nbsp;2: Distribution of vaccination history
   vertical-align: middle;
 }
 
-#febrqdgipm .gt_from_md > :first-child {
+#lfptoparhs .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#febrqdgipm .gt_from_md > :last-child {
+#lfptoparhs .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#febrqdgipm .gt_row {
+#lfptoparhs .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4381,7 +4439,7 @@ Figure&nbsp;2: Distribution of vaccination history
   overflow-x: hidden;
 }
 
-#febrqdgipm .gt_stub {
+#lfptoparhs .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4394,7 +4452,7 @@ Figure&nbsp;2: Distribution of vaccination history
   padding-right: 5px;
 }
 
-#febrqdgipm .gt_stub_row_group {
+#lfptoparhs .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4408,15 +4466,15 @@ Figure&nbsp;2: Distribution of vaccination history
   vertical-align: top;
 }
 
-#febrqdgipm .gt_row_group_first td {
+#lfptoparhs .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#febrqdgipm .gt_row_group_first th {
+#lfptoparhs .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#febrqdgipm .gt_summary_row {
+#lfptoparhs .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4426,16 +4484,16 @@ Figure&nbsp;2: Distribution of vaccination history
   padding-right: 5px;
 }
 
-#febrqdgipm .gt_first_summary_row {
+#lfptoparhs .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#febrqdgipm .gt_first_summary_row.thick {
+#lfptoparhs .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#febrqdgipm .gt_last_summary_row {
+#lfptoparhs .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4445,7 +4503,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-bottom-color: #D3D3D3;
 }
 
-#febrqdgipm .gt_grand_summary_row {
+#lfptoparhs .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4455,7 +4513,7 @@ Figure&nbsp;2: Distribution of vaccination history
   padding-right: 5px;
 }
 
-#febrqdgipm .gt_first_grand_summary_row {
+#lfptoparhs .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4465,7 +4523,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-top-color: #D3D3D3;
 }
 
-#febrqdgipm .gt_last_grand_summary_row_top {
+#lfptoparhs .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4475,11 +4533,11 @@ Figure&nbsp;2: Distribution of vaccination history
   border-bottom-color: #D3D3D3;
 }
 
-#febrqdgipm .gt_striped {
+#lfptoparhs .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#febrqdgipm .gt_table_body {
+#lfptoparhs .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4488,7 +4546,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-bottom-color: #D3D3D3;
 }
 
-#febrqdgipm .gt_footnotes {
+#lfptoparhs .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4502,7 +4560,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-right-color: #D3D3D3;
 }
 
-#febrqdgipm .gt_footnote {
+#lfptoparhs .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -4511,7 +4569,7 @@ Figure&nbsp;2: Distribution of vaccination history
   padding-right: 5px;
 }
 
-#febrqdgipm .gt_sourcenotes {
+#lfptoparhs .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4525,7 +4583,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-right-color: #D3D3D3;
 }
 
-#febrqdgipm .gt_sourcenote {
+#lfptoparhs .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -4533,63 +4591,63 @@ Figure&nbsp;2: Distribution of vaccination history
   padding-right: 5px;
 }
 
-#febrqdgipm .gt_left {
+#lfptoparhs .gt_left {
   text-align: left;
 }
 
-#febrqdgipm .gt_center {
+#lfptoparhs .gt_center {
   text-align: center;
 }
 
-#febrqdgipm .gt_right {
+#lfptoparhs .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#febrqdgipm .gt_font_normal {
+#lfptoparhs .gt_font_normal {
   font-weight: normal;
 }
 
-#febrqdgipm .gt_font_bold {
+#lfptoparhs .gt_font_bold {
   font-weight: bold;
 }
 
-#febrqdgipm .gt_font_italic {
+#lfptoparhs .gt_font_italic {
   font-style: italic;
 }
 
-#febrqdgipm .gt_super {
+#lfptoparhs .gt_super {
   font-size: 65%;
 }
 
-#febrqdgipm .gt_footnote_marks {
+#lfptoparhs .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#febrqdgipm .gt_asterisk {
+#lfptoparhs .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#febrqdgipm .gt_indent_1 {
+#lfptoparhs .gt_indent_1 {
   text-indent: 5px;
 }
 
-#febrqdgipm .gt_indent_2 {
+#lfptoparhs .gt_indent_2 {
   text-indent: 10px;
 }
 
-#febrqdgipm .gt_indent_3 {
+#lfptoparhs .gt_indent_3 {
   text-indent: 15px;
 }
 
-#febrqdgipm .gt_indent_4 {
+#lfptoparhs .gt_indent_4 {
   text-indent: 20px;
 }
 
-#febrqdgipm .gt_indent_5 {
+#lfptoparhs .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -4727,23 +4785,23 @@ Figure&nbsp;2: Distribution of vaccination history
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl_summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<div id="jtzfpcygli" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#jtzfpcygli table {
+<div id="urkvsxvvqf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#urkvsxvvqf table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#jtzfpcygli thead, #jtzfpcygli tbody, #jtzfpcygli tfoot, #jtzfpcygli tr, #jtzfpcygli td, #jtzfpcygli th {
+#urkvsxvvqf thead, #urkvsxvvqf tbody, #urkvsxvvqf tfoot, #urkvsxvvqf tr, #urkvsxvvqf td, #urkvsxvvqf th {
   border-style: none;
 }
 
-#jtzfpcygli p {
+#urkvsxvvqf p {
   margin: 0;
   padding: 0;
 }
 
-#jtzfpcygli .gt_table {
+#urkvsxvvqf .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -4769,12 +4827,12 @@ Figure&nbsp;2: Distribution of vaccination history
   border-left-color: #D3D3D3;
 }
 
-#jtzfpcygli .gt_caption {
+#urkvsxvvqf .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#jtzfpcygli .gt_title {
+#urkvsxvvqf .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -4786,7 +4844,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-bottom-width: 0;
 }
 
-#jtzfpcygli .gt_subtitle {
+#urkvsxvvqf .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -4798,7 +4856,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-top-width: 0;
 }
 
-#jtzfpcygli .gt_heading {
+#urkvsxvvqf .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -4810,13 +4868,13 @@ Figure&nbsp;2: Distribution of vaccination history
   border-right-color: #D3D3D3;
 }
 
-#jtzfpcygli .gt_bottom_border {
+#urkvsxvvqf .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#jtzfpcygli .gt_col_headings {
+#urkvsxvvqf .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4831,7 +4889,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-right-color: #D3D3D3;
 }
 
-#jtzfpcygli .gt_col_heading {
+#urkvsxvvqf .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4851,7 +4909,7 @@ Figure&nbsp;2: Distribution of vaccination history
   overflow-x: hidden;
 }
 
-#jtzfpcygli .gt_column_spanner_outer {
+#urkvsxvvqf .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4863,15 +4921,15 @@ Figure&nbsp;2: Distribution of vaccination history
   padding-right: 4px;
 }
 
-#jtzfpcygli .gt_column_spanner_outer:first-child {
+#urkvsxvvqf .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#jtzfpcygli .gt_column_spanner_outer:last-child {
+#urkvsxvvqf .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#jtzfpcygli .gt_column_spanner {
+#urkvsxvvqf .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -4883,11 +4941,11 @@ Figure&nbsp;2: Distribution of vaccination history
   width: 100%;
 }
 
-#jtzfpcygli .gt_spanner_row {
+#urkvsxvvqf .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#jtzfpcygli .gt_group_heading {
+#urkvsxvvqf .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4913,7 +4971,7 @@ Figure&nbsp;2: Distribution of vaccination history
   text-align: left;
 }
 
-#jtzfpcygli .gt_empty_group_heading {
+#urkvsxvvqf .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -4928,15 +4986,15 @@ Figure&nbsp;2: Distribution of vaccination history
   vertical-align: middle;
 }
 
-#jtzfpcygli .gt_from_md > :first-child {
+#urkvsxvvqf .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#jtzfpcygli .gt_from_md > :last-child {
+#urkvsxvvqf .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#jtzfpcygli .gt_row {
+#urkvsxvvqf .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4955,7 +5013,7 @@ Figure&nbsp;2: Distribution of vaccination history
   overflow-x: hidden;
 }
 
-#jtzfpcygli .gt_stub {
+#urkvsxvvqf .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4968,7 +5026,7 @@ Figure&nbsp;2: Distribution of vaccination history
   padding-right: 5px;
 }
 
-#jtzfpcygli .gt_stub_row_group {
+#urkvsxvvqf .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4982,15 +5040,15 @@ Figure&nbsp;2: Distribution of vaccination history
   vertical-align: top;
 }
 
-#jtzfpcygli .gt_row_group_first td {
+#urkvsxvvqf .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#jtzfpcygli .gt_row_group_first th {
+#urkvsxvvqf .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#jtzfpcygli .gt_summary_row {
+#urkvsxvvqf .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5000,16 +5058,16 @@ Figure&nbsp;2: Distribution of vaccination history
   padding-right: 5px;
 }
 
-#jtzfpcygli .gt_first_summary_row {
+#urkvsxvvqf .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#jtzfpcygli .gt_first_summary_row.thick {
+#urkvsxvvqf .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#jtzfpcygli .gt_last_summary_row {
+#urkvsxvvqf .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5019,7 +5077,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-bottom-color: #D3D3D3;
 }
 
-#jtzfpcygli .gt_grand_summary_row {
+#urkvsxvvqf .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5029,7 +5087,7 @@ Figure&nbsp;2: Distribution of vaccination history
   padding-right: 5px;
 }
 
-#jtzfpcygli .gt_first_grand_summary_row {
+#urkvsxvvqf .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5039,7 +5097,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-top-color: #D3D3D3;
 }
 
-#jtzfpcygli .gt_last_grand_summary_row_top {
+#urkvsxvvqf .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5049,11 +5107,11 @@ Figure&nbsp;2: Distribution of vaccination history
   border-bottom-color: #D3D3D3;
 }
 
-#jtzfpcygli .gt_striped {
+#urkvsxvvqf .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#jtzfpcygli .gt_table_body {
+#urkvsxvvqf .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5062,7 +5120,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-bottom-color: #D3D3D3;
 }
 
-#jtzfpcygli .gt_footnotes {
+#urkvsxvvqf .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5076,7 +5134,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-right-color: #D3D3D3;
 }
 
-#jtzfpcygli .gt_footnote {
+#urkvsxvvqf .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -5085,7 +5143,7 @@ Figure&nbsp;2: Distribution of vaccination history
   padding-right: 5px;
 }
 
-#jtzfpcygli .gt_sourcenotes {
+#urkvsxvvqf .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5099,7 +5157,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-right-color: #D3D3D3;
 }
 
-#jtzfpcygli .gt_sourcenote {
+#urkvsxvvqf .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -5107,63 +5165,63 @@ Figure&nbsp;2: Distribution of vaccination history
   padding-right: 5px;
 }
 
-#jtzfpcygli .gt_left {
+#urkvsxvvqf .gt_left {
   text-align: left;
 }
 
-#jtzfpcygli .gt_center {
+#urkvsxvvqf .gt_center {
   text-align: center;
 }
 
-#jtzfpcygli .gt_right {
+#urkvsxvvqf .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#jtzfpcygli .gt_font_normal {
+#urkvsxvvqf .gt_font_normal {
   font-weight: normal;
 }
 
-#jtzfpcygli .gt_font_bold {
+#urkvsxvvqf .gt_font_bold {
   font-weight: bold;
 }
 
-#jtzfpcygli .gt_font_italic {
+#urkvsxvvqf .gt_font_italic {
   font-style: italic;
 }
 
-#jtzfpcygli .gt_super {
+#urkvsxvvqf .gt_super {
   font-size: 65%;
 }
 
-#jtzfpcygli .gt_footnote_marks {
+#urkvsxvvqf .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#jtzfpcygli .gt_asterisk {
+#urkvsxvvqf .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#jtzfpcygli .gt_indent_1 {
+#urkvsxvvqf .gt_indent_1 {
   text-indent: 5px;
 }
 
-#jtzfpcygli .gt_indent_2 {
+#urkvsxvvqf .gt_indent_2 {
   text-indent: 10px;
 }
 
-#jtzfpcygli .gt_indent_3 {
+#urkvsxvvqf .gt_indent_3 {
   text-indent: 15px;
 }
 
-#jtzfpcygli .gt_indent_4 {
+#urkvsxvvqf .gt_indent_4 {
   text-indent: 20px;
 }
 
-#jtzfpcygli .gt_indent_5 {
+#urkvsxvvqf .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -5265,23 +5323,23 @@ Figure&nbsp;2: Distribution of vaccination history
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl_summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<div id="akkdnvcrop" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#akkdnvcrop table {
+<div id="shrgmghtqo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#shrgmghtqo table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#akkdnvcrop thead, #akkdnvcrop tbody, #akkdnvcrop tfoot, #akkdnvcrop tr, #akkdnvcrop td, #akkdnvcrop th {
+#shrgmghtqo thead, #shrgmghtqo tbody, #shrgmghtqo tfoot, #shrgmghtqo tr, #shrgmghtqo td, #shrgmghtqo th {
   border-style: none;
 }
 
-#akkdnvcrop p {
+#shrgmghtqo p {
   margin: 0;
   padding: 0;
 }
 
-#akkdnvcrop .gt_table {
+#shrgmghtqo .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -5307,12 +5365,12 @@ Figure&nbsp;2: Distribution of vaccination history
   border-left-color: #D3D3D3;
 }
 
-#akkdnvcrop .gt_caption {
+#shrgmghtqo .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#akkdnvcrop .gt_title {
+#shrgmghtqo .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -5324,7 +5382,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-bottom-width: 0;
 }
 
-#akkdnvcrop .gt_subtitle {
+#shrgmghtqo .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -5336,7 +5394,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-top-width: 0;
 }
 
-#akkdnvcrop .gt_heading {
+#shrgmghtqo .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -5348,13 +5406,13 @@ Figure&nbsp;2: Distribution of vaccination history
   border-right-color: #D3D3D3;
 }
 
-#akkdnvcrop .gt_bottom_border {
+#shrgmghtqo .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#akkdnvcrop .gt_col_headings {
+#shrgmghtqo .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5369,7 +5427,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-right-color: #D3D3D3;
 }
 
-#akkdnvcrop .gt_col_heading {
+#shrgmghtqo .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5389,7 +5447,7 @@ Figure&nbsp;2: Distribution of vaccination history
   overflow-x: hidden;
 }
 
-#akkdnvcrop .gt_column_spanner_outer {
+#shrgmghtqo .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5401,15 +5459,15 @@ Figure&nbsp;2: Distribution of vaccination history
   padding-right: 4px;
 }
 
-#akkdnvcrop .gt_column_spanner_outer:first-child {
+#shrgmghtqo .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#akkdnvcrop .gt_column_spanner_outer:last-child {
+#shrgmghtqo .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#akkdnvcrop .gt_column_spanner {
+#shrgmghtqo .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -5421,11 +5479,11 @@ Figure&nbsp;2: Distribution of vaccination history
   width: 100%;
 }
 
-#akkdnvcrop .gt_spanner_row {
+#shrgmghtqo .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#akkdnvcrop .gt_group_heading {
+#shrgmghtqo .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5451,7 +5509,7 @@ Figure&nbsp;2: Distribution of vaccination history
   text-align: left;
 }
 
-#akkdnvcrop .gt_empty_group_heading {
+#shrgmghtqo .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -5466,15 +5524,15 @@ Figure&nbsp;2: Distribution of vaccination history
   vertical-align: middle;
 }
 
-#akkdnvcrop .gt_from_md > :first-child {
+#shrgmghtqo .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#akkdnvcrop .gt_from_md > :last-child {
+#shrgmghtqo .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#akkdnvcrop .gt_row {
+#shrgmghtqo .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5493,7 +5551,7 @@ Figure&nbsp;2: Distribution of vaccination history
   overflow-x: hidden;
 }
 
-#akkdnvcrop .gt_stub {
+#shrgmghtqo .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5506,7 +5564,7 @@ Figure&nbsp;2: Distribution of vaccination history
   padding-right: 5px;
 }
 
-#akkdnvcrop .gt_stub_row_group {
+#shrgmghtqo .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5520,15 +5578,15 @@ Figure&nbsp;2: Distribution of vaccination history
   vertical-align: top;
 }
 
-#akkdnvcrop .gt_row_group_first td {
+#shrgmghtqo .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#akkdnvcrop .gt_row_group_first th {
+#shrgmghtqo .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#akkdnvcrop .gt_summary_row {
+#shrgmghtqo .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5538,16 +5596,16 @@ Figure&nbsp;2: Distribution of vaccination history
   padding-right: 5px;
 }
 
-#akkdnvcrop .gt_first_summary_row {
+#shrgmghtqo .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#akkdnvcrop .gt_first_summary_row.thick {
+#shrgmghtqo .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#akkdnvcrop .gt_last_summary_row {
+#shrgmghtqo .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5557,7 +5615,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-bottom-color: #D3D3D3;
 }
 
-#akkdnvcrop .gt_grand_summary_row {
+#shrgmghtqo .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5567,7 +5625,7 @@ Figure&nbsp;2: Distribution of vaccination history
   padding-right: 5px;
 }
 
-#akkdnvcrop .gt_first_grand_summary_row {
+#shrgmghtqo .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5577,7 +5635,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-top-color: #D3D3D3;
 }
 
-#akkdnvcrop .gt_last_grand_summary_row_top {
+#shrgmghtqo .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5587,11 +5645,11 @@ Figure&nbsp;2: Distribution of vaccination history
   border-bottom-color: #D3D3D3;
 }
 
-#akkdnvcrop .gt_striped {
+#shrgmghtqo .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#akkdnvcrop .gt_table_body {
+#shrgmghtqo .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5600,7 +5658,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-bottom-color: #D3D3D3;
 }
 
-#akkdnvcrop .gt_footnotes {
+#shrgmghtqo .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5614,7 +5672,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-right-color: #D3D3D3;
 }
 
-#akkdnvcrop .gt_footnote {
+#shrgmghtqo .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -5623,7 +5681,7 @@ Figure&nbsp;2: Distribution of vaccination history
   padding-right: 5px;
 }
 
-#akkdnvcrop .gt_sourcenotes {
+#shrgmghtqo .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5637,7 +5695,7 @@ Figure&nbsp;2: Distribution of vaccination history
   border-right-color: #D3D3D3;
 }
 
-#akkdnvcrop .gt_sourcenote {
+#shrgmghtqo .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -5645,63 +5703,63 @@ Figure&nbsp;2: Distribution of vaccination history
   padding-right: 5px;
 }
 
-#akkdnvcrop .gt_left {
+#shrgmghtqo .gt_left {
   text-align: left;
 }
 
-#akkdnvcrop .gt_center {
+#shrgmghtqo .gt_center {
   text-align: center;
 }
 
-#akkdnvcrop .gt_right {
+#shrgmghtqo .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#akkdnvcrop .gt_font_normal {
+#shrgmghtqo .gt_font_normal {
   font-weight: normal;
 }
 
-#akkdnvcrop .gt_font_bold {
+#shrgmghtqo .gt_font_bold {
   font-weight: bold;
 }
 
-#akkdnvcrop .gt_font_italic {
+#shrgmghtqo .gt_font_italic {
   font-style: italic;
 }
 
-#akkdnvcrop .gt_super {
+#shrgmghtqo .gt_super {
   font-size: 65%;
 }
 
-#akkdnvcrop .gt_footnote_marks {
+#shrgmghtqo .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#akkdnvcrop .gt_asterisk {
+#shrgmghtqo .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#akkdnvcrop .gt_indent_1 {
+#shrgmghtqo .gt_indent_1 {
   text-indent: 5px;
 }
 
-#akkdnvcrop .gt_indent_2 {
+#shrgmghtqo .gt_indent_2 {
   text-indent: 10px;
 }
 
-#akkdnvcrop .gt_indent_3 {
+#shrgmghtqo .gt_indent_3 {
   text-indent: 15px;
 }
 
-#akkdnvcrop .gt_indent_4 {
+#shrgmghtqo .gt_indent_4 {
   text-indent: 20px;
 }
 
-#akkdnvcrop .gt_indent_5 {
+#shrgmghtqo .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
