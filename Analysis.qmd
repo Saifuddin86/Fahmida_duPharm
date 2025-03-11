@@ -1,0 +1,399 @@
+---
+title: "Personal Level screening for COPD and COPD Patient Management Survey "
+format: docx
+editor: visual
+editor_options: 
+  chunk_output_type: console
+
+execute:
+  echo: false
+  warning: false
+---
+
+# Personal Level screening for COPD
+
+## Data pre-prepossessing
+
+```{r}
+#rm(list = ls())
+
+```
+
+```{r}
+library(readxl)
+data0<- read_excel("Personal Level screening for COPD.xlsx", 
+    sheet = "Sheet6")
+#View(data0)
+
+library(tidyverse)
+library(knitr)
+library(gtsummary)
+
+#glimpse(data0)
+
+
+
+
+```
+
+### Demographic and other characteristics of participants
+
+```{r}
+##| label: tbl-tfrequency
+##| tbl-cap: Demographic and other characteristics of participants
+
+#glimpse(data0)
+
+data0[,c(3:10,12,14)] %>% 
+  tbl_summary(statistic = list(all_continuous() ~ "{mean} ({sd})"),
+              label =list(`Do you have any member in your family have experienced the same condition?`="Do you have any member in your family have experienced the same condition? (Yes)" ))
+```
+
+### Summary statistics of "Duration of having bronchitis or chronic coughing with sputum from the chest in the last year" and "Duration of having bronchitis or chronic coughing with sputum from the chest "
+
+```{r}
+#| label: tbl-tsumstat
+#| tbl-cap: Summary statistics of duarion of bronchitis or chronic coughing with sputum from the chest (in months)
+
+
+data0 %>%select(`How many months in the last year have you had bronchitis or chronic coughing with sputum from the chest?`,`For how many years you had bronchitis or chronic coughing with sputum from the chest?`) %>% gather(key = "Variable",value = "Duration") %>% 
+  group_by(Variable) %>%
+  summarise(
+    Min = min(Duration, na.rm = TRUE),
+    Max = max(Duration, na.rm = TRUE),
+    Mean = mean(Duration, na.rm = TRUE),
+    SD = sd(Duration, na.rm = TRUE)
+  )->s1
+
+s1 %>% kable(digits = 2)
+
+```
+
+```{r}
+#| label: fig-fighist
+#| fig-cap: "Frequency histogram of duration of having bronchitis or chronic coughing "
+#| fig-subcap: 
+#|   - "Variable 1"
+#|   - "Variable 2"
+#| layout-ncol: 2
+
+
+par(mar = c(6, 6, 4, 2))  # Adjust as needed
+par(mgp = c(4, 1, 0))  # First value controls axis title distance
+
+par(cex.lab = 1.3)  # Set larger axis labels globally
+par(cex.axis=1)
+
+hist(data0$`How many months in the last year have you had bronchitis or chronic coughing with sputum from the chest?`,breaks = 5,
+     xlab = "Duration of having bronchitis or chronic coughing \n with sputum from the chest in the last year (in months)",
+     main = "",col = "steelblue",ylim = c(0,59),)
+
+hist(data0$`For how many years you had bronchitis or chronic coughing with sputum from the chest?`,breaks = 5,
+     xlab = "Duration of having bronchitis or chronic \n coughing with sputum from the chest (in months) ", main = "",col = "steelblue")
+
+
+
+
+```
+
+### Do you have previous history of vaccination? if yes, write the name of vaccine
+
+```{r}
+##| label: tbl-tvaccine_stat
+##| tbl-cap: Previous history of vaccination
+
+#data0$`Do you have previous history of vaccination? if yes, write the name of vaccine.`
+
+
+data0 %>% 
+  separate_rows(`Do you have previous history of vaccination? if yes, write the name of vaccine.`, sep = ",") %>%  # Split comma-separated values into rows
+  count(`Do you have previous history of vaccination? if yes, write the name of vaccine.`, sort = TRUE)->vaccine_stat
+
+
+vaccine_stat %>% filter(`Do you have previous history of vaccination? if yes, write the name of vaccine.`=="No") %>%
+  mutate(Percent=n*100/250) %>% 
+  kable(col.names = c("Do you have previous history of vaccination?","N","Percent (out of 250)"),digits = 2)
+
+
+
+  
+  
+```
+
+```{r}
+vaccine_stat %>% filter(`Do you have previous history of vaccination? if yes, write the name of vaccine.`!="No") %>%
+  mutate(Percent=n*100/250) %>%
+  kable(col.names = c("If yes, write the name of vaccine","N","Percent (out of 250)"),digits = 2)
+
+```
+
+```{r}
+#| label: fig-fvachistry
+#| fig-cap: Distribution of vaccination history
+#| 
+vaccine_stat %>% filter(`Do you have previous history of vaccination? if yes, write the name of vaccine.`!="No") %>%mutate(Percent=n*100/250) %>% 
+  ggplot(aes(x=reorder(`Do you have previous history of vaccination? if yes, write the name of vaccine.`,Percent),y=Percent))+
+  geom_col()+labs(x="Previous history of vaccination")+
+  coord_flip()+
+  theme_bw()+
+  theme(axis.text = element_text(angle = 0,size = 12),
+        axis.title = element_text(size=14))
+```
+
+### Which medication you are taking for COPD?
+
+```{r}
+data0<- read_excel("Personal Level screening for COPD.xlsx", 
+    sheet = "Sheet6")
+
+#glimpse(data0)
+#view(data0)
+
+data0 %>% 
+  separate_rows(`Which medication you are taking for COPD?`,sep = ",") %>% 
+  count(`Which medication you are taking for COPD?`, name = "Frequency")%>%
+  #print(n=55)
+  mutate(Percentage = Frequency*100/250) %>%
+  arrange(-Frequency) %>% 
+  kable(digits = 2,col.names = c("Medication taking for COPD?`","Frequency","Percentage (out of 30)"))
+
+```
+
+### Corticosteroids, Oxygen therapy ,Bronchodilators data preparation
+
+```{r}
+# Data preparation for multiple response:: "`Which medication you are taking for COPD?`"| Type-Binary
+
+# Function to one-hot encode a column
+one_hot_encode <- function(data, column_name) {
+  data %>%
+    separate_rows(!!sym(column_name), sep = ",") %>%  # Split into multiple rows
+    mutate(Value = 1) %>%
+    pivot_wider(names_from = !!sym(column_name), values_from = Value, values_fill = 0)  # Convert to wide format
+}
+
+
+###########################
+#data0$`Which medication you are taking for COPD?`
+library(janitor)
+clean_names(data0)->data1
+
+#data1$which_medication_you_are_taking_for_copd
+#data1$do_you_have_a_previous_history_of_smoking
+
+# One-hot encode Symptoms
+df_medication <- one_hot_encode(data1,"which_medication_you_are_taking_for_copd")
+
+df_encoded <- data1 %>% select(id, age,gender,do_you_have_a_previous_history_of_smoking) %>%
+  left_join(df_medication %>% select(-age,-gender,-do_you_have_a_previous_history_of_smoking), by = "id")  # Remove duplicate columns
+
+#df_encoded %>% view()
+
+
+#df_encoded$`Oxygen therapy`
+
+df_encoded %>% select(age,gender,do_you_have_a_previous_history_of_smoking,Corticosteroids,`Oxygen therapy`,Bronchodilators)->association_data
+
+
+
+
+```
+
+### A) Is there any association between medication (Corticosteroids) and smoking?
+
+```{r}
+# Function to extract chi-square test statistic
+chisq_test_stat <- function(data, variable, by, ...) {
+  chisq.test(table(data[[variable]], data[[by]])) %>% 
+  broom::tidy() %>%
+    select(statistic, p.value)
+}
+
+
+association_data %>% select(Corticosteroids,do_you_have_a_previous_history_of_smoking) %>%
+ # mutate_if(is.numeric,as.factor) %>% 
+  tbl_summary(by=do_you_have_a_previous_history_of_smoking,
+              label=list(do_you_have_a_previous_history_of_smoking~"Smoking status",
+                         Corticosteroids~"Corticosteroids (Yes)"))%>%
+  #add_p(test = list(Corticosteroids ~ "chisq.test"))%>%
+  add_stat(fns = everything() ~ chisq_test_stat) %>% 
+  modify_header(statistic = "**Chi-square**", p.value = "**p-value**") %>%
+  add_p(pvalue_fun = ~ style_pvalue(.x, digits = 3)) %>% 
+  modify_spanning_header(starts_with("stat_") ~ "**Smoking status**")  # Column variable name
+
+
+
+```
+
+The prevalence of *Corticosteroids* was the most in group of participants/ patients who previously smoke (41%), followed by the participants who still smoking (31%) and who did not smoke (28%). But the proportions of prevalence of *Corticosteroids* are not significantly different among the groups, $\chi^2=3.68$, p-value=0.159.
+
+### B) Is there any association between medication (Oxygen therapy) and smoking?
+
+```{r}
+association_data %>% select(`Oxygen therapy`,do_you_have_a_previous_history_of_smoking) %>% 
+  tbl_summary(by=do_you_have_a_previous_history_of_smoking,
+              label=list(do_you_have_a_previous_history_of_smoking~"Smoking status",
+                         `Oxygen therapy`~"Oxygen therapy (Yes)"))%>%
+  add_p() %>% 
+  modify_header(label = " ") %>%  # Row variable name
+  modify_spanning_header(starts_with("stat_") ~ "**Smoking status**")  # Column variable name
+
+
+```
+
+### C) Is there any association between medication (Bronchodilators) and smoking?
+
+```{r}
+
+association_data %>% 
+  select(Bronchodilators,do_you_have_a_previous_history_of_smoking) %>% 
+  tbl_summary(by=do_you_have_a_previous_history_of_smoking,
+              label=list(do_you_have_a_previous_history_of_smoking~"Smoking status",
+                         Bronchodilators~"Bronchodilators (Yes)"))%>%
+  add_p() %>% 
+  modify_header(label = " ") %>%  # Row variable name
+  modify_spanning_header(starts_with("stat_") ~ "**Smoking status**")  # Column variable name
+```
+
+```{r}
+
+glm(Corticosteroids~age+gender+do_you_have_a_previous_history_of_smoking,
+    family="binomial", data=association_data)->glm1
+#tbl_regression(glm1, exponentiate = TRUE)
+
+
+glm(`Oxygen therapy`~age+gender+do_you_have_a_previous_history_of_smoking,
+    family="binomial", data=association_data)->glm2
+#tbl_regression(glm2,exponentiate = TRUE)
+
+```
+
+# COPD Patient Management Survey (n=30)
+
+```{r}
+#rm(list = ls())
+
+```
+
+### Specialization
+
+Specialization of physicians.
+
+```{r}
+library(readxl)
+
+Survey <- read_excel("COPD Patient Management Survey.xlsx", 
+    sheet = "Doctor")
+
+#glimpse(Survey)
+
+Survey %>% 
+  separate_rows(Specialization,sep = ",") %>% 
+  count(Specialization, name = "Frequency") %>% # Count occurrences
+  mutate(Percentage = Frequency*100/30) %>%arrange(-Frequency) %>% 
+  kable(digits = 2,col.names = c("Specialization","Frequency","Percentage (out of 30)"))
+
+
+```
+
+### The most common age group of COPD patient, Age group comes for recurrent treatment
+
+```{r}
+Survey[,5:6] %>% tbl_summary()
+```
+
+### What are the most common symptoms presented by COPD patients?
+
+```{r}
+
+
+Survey %>% 
+  separate_rows(`What are the most common symptoms presented by COPD patients?`,sep = ";") %>% 
+  count(`What are the most common symptoms presented by COPD patients?`, name = "Frequency") %>% # Count occurrences
+  mutate(Percentage = Frequency*100/30) %>%arrange(-Frequency) %>% 
+  kable(digits = 2,col.names = c("Most common symptoms presented by COPD patients","Frequency","Percentage (out of 30)"))
+
+```
+
+### Write symptom if the previous answer is "others"
+
+```{r}
+
+Survey %>% 
+  separate_rows(`write symptom if the previous answer is "others"`,sep = ",") %>% 
+  count(`write symptom if the previous answer is "others"`, name = "Frequency") %>% # Count occurrences
+  mutate(Percentage = Frequency*100/30) %>%arrange(-Frequency) %>% 
+  kable(digits = 2,col.names = c("Symptom if the previous answer is others","Frequency","Percentage (out of 30)"))
+```
+
+### Which diagnostic tests do you commonly use for diagnosis and monitoring COPD?
+
+```{r}
+#glimpse(Survey)
+
+Survey %>% 
+  separate_rows(`Which diagnostic tests do you commonly use for diagnosis and monitoring COPD?`,sep = ";") %>% 
+  count(`Which diagnostic tests do you commonly use for diagnosis and monitoring COPD?`, name = "Frequency") %>% # Count occurrences
+  mutate(Percentage = Frequency*100/30) %>%arrange(-Frequency) %>% 
+  kable(digits = 2,col.names = c("Diagnostic tests do you commonly use for diagnosis and monitoring COPD","Frequency","Percentage (out of 30)"))
+```
+
+### write diagnostic test if the previous answer is "others"
+
+```{r}
+
+#glimpse(Survey)
+
+Survey %>% 
+  separate_rows(`write diagnostic test if the previous answer is "others"`,sep = ",") %>% 
+  count(`write diagnostic test if the previous answer is "others"`, name = "Frequency") %>% # Count occurrences
+  mutate(Percentage = Frequency*100/30) %>%arrange(-Frequency) %>% 
+  kable(digits = 2,col.names = c("Diagnostic test if the previous answer is others","Frequency","Percentage (out of 30)"))
+
+```
+
+### Which medication do you typically prescribe for COPD patients?
+
+```{r}
+#glimpse(Survey)
+
+Survey %>% 
+  separate_rows(`Which medication do you typically prescribe for COPD patients?`,sep = ";") %>% 
+  count(`Which medication do you typically prescribe for COPD patients?`, name = "Frequency") %>% # Count occurrences
+  mutate(Percentage = Frequency*100/30) %>%arrange(-Frequency) %>% 
+  kable(digits = 2,col.names = c("Medication do you typically prescribe for COPD patients?","Frequency","Percentage (out of 30)"))
+```
+
+### If previous answer is other, Kindly specify-
+
+Two answers-Long acting and Long-acting beta-agonists.
+
+### What is the average cost of a month's worth of COPD medication for a patient (estimate in local currency)?
+
+```{r}
+Survey %>% select(`What is the average cost of a month's worth of COPD medication for a patient (estimate in local currency)?`) %>% 
+  tbl_summary()
+```
+
+### Do you observe any differences in medication response between smokers and non-smokers? If yes please describe-
+
+```{r}
+Survey %>% select(`Do you observe any differences in medication response between smokers and non-smokers?`, `If Yes, Please describe-`) %>% 
+  tbl_summary()
+```
+
+### How often do you recommend follow up tests for COPD patient (e.g. spirometry)?+
+
+### How frequently do COPD patients require hospitalization due to exacerbations? +
+
+### What lifestyle changes do you most commonly recommend to COPD patients? +
+
+### Please specify if previous answer is "Others" +
+
+### Are there any new treatments or medication for COPD that you find promising?
+
+```{r}
+Survey %>% select(`How often do you recommend follow up tests for COPD patient (e.g. spirometry)?`,`How frequently do COPD patients require hospitalization due to exacerbations?`,`What lifestyle changes do you most commonly recommend to COPD patients?`,`Please specify if previous answer is "Others"`,`Are there any new treatments or medication for COPD that you find promising?`) %>% 
+  tbl_summary()
+
+```
