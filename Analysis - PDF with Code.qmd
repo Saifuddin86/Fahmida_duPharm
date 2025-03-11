@@ -1,6 +1,6 @@
 ---
 title: "Personal Level screening for COPD and COPD Patient Management Survey "
-format: html
+format: pdf
 editor: visual
 editor_options: 
   chunk_output_type: console
@@ -48,7 +48,7 @@ data0[,c(3:10,12,14)] %>%
               label =list(`Do you have any member in your family have experienced the same condition?`="Do you have any member in your family have experienced the same condition? (Yes)" ))
 ```
 
-### Summary statistics of "Duration of having bronchitis or chronic coughing with sputum from the chest in the last year" and  "Duration of having bronchitis or chronic coughing with sputum from the chest "
+### Summary statistics of "Duration of having bronchitis or chronic coughing with sputum from the chest in the last year" and "Duration of having bronchitis or chronic coughing with sputum from the chest "
 
 ```{r}
 #| label: tbl-tsumstat
@@ -201,17 +201,32 @@ df_encoded %>% select(age,gender,do_you_have_a_previous_history_of_smoking,Corti
 ### A) Is there any association between medication (Corticosteroids) and smoking?
 
 ```{r}
-association_data %>% select(Corticosteroids,do_you_have_a_previous_history_of_smoking) %>% 
+#| label: tbl-tasso_corti
+#| tbl-cap: Association between smoking status and prevelance of Corticosteroids
+
+# Function to extract chi-square test statistic
+chisq_test_stat <- function(data, variable, by, ...) {
+  chisq.test(table(data[[variable]], data[[by]])) %>% 
+  broom::tidy() %>%
+    select(statistic, p.value)
+}
+
+
+association_data %>% select(Corticosteroids,do_you_have_a_previous_history_of_smoking) %>%
+ # mutate_if(is.numeric,as.factor) %>% 
   tbl_summary(by=do_you_have_a_previous_history_of_smoking,
               label=list(do_you_have_a_previous_history_of_smoking~"Smoking status",
                          Corticosteroids~"Corticosteroids (Yes)"))%>%
-  add_p() %>% 
-  modify_header(label = " ") %>%  # Row variable name
+  add_stat(fns = everything() ~ chisq_test_stat) %>% 
+  modify_header(statistic = "**Chi-square**", p.value = "**p-value**") %>%
+  add_p(pvalue_fun = ~ style_pvalue(.x, digits = 3)) %>% 
   modify_spanning_header(starts_with("stat_") ~ "**Smoking status**")  # Column variable name
 
 
 
 ```
+
+The prevalence of *Corticosteroids* was the most in group of participants/ patients who previously smoke (41%), followed by the participants who still smoking (31%) and who did not smoke (28%). But the proportions of prevalence of *Corticosteroids* are not significantly different among the groups, $\chi^2=3.68$, p-value=0.159 (@tbl-tasso_corti).
 
 ### B) Is there any association between medication (Oxygen therapy) and smoking?
 
@@ -220,12 +235,15 @@ association_data %>% select(`Oxygen therapy`,do_you_have_a_previous_history_of_s
   tbl_summary(by=do_you_have_a_previous_history_of_smoking,
               label=list(do_you_have_a_previous_history_of_smoking~"Smoking status",
                          `Oxygen therapy`~"Oxygen therapy (Yes)"))%>%
-  add_p() %>% 
-  modify_header(label = " ") %>%  # Row variable name
+  add_stat(fns = everything() ~ chisq_test_stat) %>% 
+  modify_header(statistic = "**Chi-square**", p.value = "**p-value**") %>%
+  add_p(pvalue_fun = ~ style_pvalue(.x, digits = 3)) %>%
   modify_spanning_header(starts_with("stat_") ~ "**Smoking status**")  # Column variable name
 
 
 ```
+
+*Please describe same as @tbl-tasso_corti.*
 
 ### C) Is there any association between medication (Bronchodilators) and smoking?
 
@@ -236,8 +254,9 @@ association_data %>%
   tbl_summary(by=do_you_have_a_previous_history_of_smoking,
               label=list(do_you_have_a_previous_history_of_smoking~"Smoking status",
                          Bronchodilators~"Bronchodilators (Yes)"))%>%
-  add_p() %>% 
-  modify_header(label = " ") %>%  # Row variable name
+  add_stat(fns = everything() ~ chisq_test_stat) %>% 
+  modify_header(statistic = "**Chi-square**", p.value = "**p-value**") %>%
+  add_p(pvalue_fun = ~ style_pvalue(.x, digits = 3)) %>%
   modify_spanning_header(starts_with("stat_") ~ "**Smoking status**")  # Column variable name
 ```
 
@@ -383,3 +402,4 @@ Survey %>% select(`How often do you recommend follow up tests for COPD patient (
   tbl_summary()
 
 ```
+

@@ -202,6 +202,9 @@ df_encoded %>% select(age,gender,do_you_have_a_previous_history_of_smoking,Corti
 ### A) Is there any association between medication (Corticosteroids) and smoking?
 
 ```{r}
+#| label: tbl-tasso_corti
+#| tbl-cap: Association between smoking status and prevelance of Corticosteroids
+
 # Function to extract chi-square test statistic
 chisq_test_stat <- function(data, variable, by, ...) {
   chisq.test(table(data[[variable]], data[[by]])) %>% 
@@ -215,7 +218,6 @@ association_data %>% select(Corticosteroids,do_you_have_a_previous_history_of_sm
   tbl_summary(by=do_you_have_a_previous_history_of_smoking,
               label=list(do_you_have_a_previous_history_of_smoking~"Smoking status",
                          Corticosteroids~"Corticosteroids (Yes)"))%>%
-  #add_p(test = list(Corticosteroids ~ "chisq.test"))%>%
   add_stat(fns = everything() ~ chisq_test_stat) %>% 
   modify_header(statistic = "**Chi-square**", p.value = "**p-value**") %>%
   add_p(pvalue_fun = ~ style_pvalue(.x, digits = 3)) %>% 
@@ -225,7 +227,7 @@ association_data %>% select(Corticosteroids,do_you_have_a_previous_history_of_sm
 
 ```
 
-The prevalence of *Corticosteroids* was the most in group of participants/ patients who previously smoke (41%), followed by the participants who still smoking (31%) and who did not smoke (28%). But the proportions of prevalence of *Corticosteroids* are not significantly different among the groups, $\chi^2=3.68$, p-value=0.159.
+The prevalence of *Corticosteroids* was the most in group of participants/ patients who previously smoke (41%), followed by the participants who still smoking (31%) and who did not smoke (28%). But the proportions of prevalence of *Corticosteroids* are not significantly different among the groups, $\chi^2=3.68$, p-value=0.159 (@tbl-tasso_corti).
 
 ### B) Is there any association between medication (Oxygen therapy) and smoking?
 
@@ -234,12 +236,15 @@ association_data %>% select(`Oxygen therapy`,do_you_have_a_previous_history_of_s
   tbl_summary(by=do_you_have_a_previous_history_of_smoking,
               label=list(do_you_have_a_previous_history_of_smoking~"Smoking status",
                          `Oxygen therapy`~"Oxygen therapy (Yes)"))%>%
-  add_p() %>% 
-  modify_header(label = " ") %>%  # Row variable name
+  add_stat(fns = everything() ~ chisq_test_stat) %>% 
+  modify_header(statistic = "**Chi-square**", p.value = "**p-value**") %>%
+  add_p(pvalue_fun = ~ style_pvalue(.x, digits = 3)) %>%
   modify_spanning_header(starts_with("stat_") ~ "**Smoking status**")  # Column variable name
 
 
 ```
+
+*Please describe same as @tbl-tasso_corti.*
 
 ### C) Is there any association between medication (Bronchodilators) and smoking?
 
@@ -250,8 +255,9 @@ association_data %>%
   tbl_summary(by=do_you_have_a_previous_history_of_smoking,
               label=list(do_you_have_a_previous_history_of_smoking~"Smoking status",
                          Bronchodilators~"Bronchodilators (Yes)"))%>%
-  add_p() %>% 
-  modify_header(label = " ") %>%  # Row variable name
+  add_stat(fns = everything() ~ chisq_test_stat) %>% 
+  modify_header(statistic = "**Chi-square**", p.value = "**p-value**") %>%
+  add_p(pvalue_fun = ~ style_pvalue(.x, digits = 3)) %>%
   modify_spanning_header(starts_with("stat_") ~ "**Smoking status**")  # Column variable name
 ```
 
