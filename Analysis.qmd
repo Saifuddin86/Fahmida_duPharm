@@ -23,6 +23,13 @@ execute:
 library(readxl)
 data0<- read_excel("Copy of Personal_Level_screening_for_COPD(1).xlsx", 
     sheet = "Sheet6",skip = 1)
+data0$`Educational qualification`<-factor(data0$`Educational qualification`,
+                                          levels = c("No formal education",
+                                                     "Secondary level",
+                                                     "Undergraduate",
+                                                     "Graduate",
+                                                     "Postgraduate"))
+
 #View(data0)
 
 library(tidyverse)
@@ -250,11 +257,7 @@ association_data %>% select(`Oxygen therapy`,do_you_have_a_previous_history_of_s
 
 *Please describe same as @tbl-tasso_corti.*
 
-<<<<<<< HEAD
 ### C) Is there any association between medication (Bronchodialators) and smoking?
-=======
-### C) Is there any association between medication (Bronchodilators) and smoking?
->>>>>>> 0fd662a776ce2a10423332d840d598e02dd09b51
 
 ```{r}
 
@@ -262,11 +265,7 @@ association_data %>%
   select(Bronchodialators,do_you_have_a_previous_history_of_smoking) %>% 
   tbl_summary(by=do_you_have_a_previous_history_of_smoking,
               label=list(do_you_have_a_previous_history_of_smoking~"Smoking status",
-<<<<<<< HEAD
                          Bronchodialators~"Bronchodilators (Yes)"))%>%
-=======
-                         Bronchodilators~"Bronchodilators (Yes)"))%>%
->>>>>>> 0fd662a776ce2a10423332d840d598e02dd09b51
   add_stat(fns = everything() ~ chisq_test_stat) %>% 
   modify_header(statistic = "**Chi-square**", p.value = "**p-value**") %>%
   add_p(pvalue_fun = ~ style_pvalue(.x, digits = 3)) %>%
