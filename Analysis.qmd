@@ -1,6 +1,6 @@
 ---
 title: "Personal Level screening for COPD and COPD Patient Management Survey "
-format: pdf
+format: docx
 editor: visual
 editor_options: 
   chunk_output_type: console
@@ -76,6 +76,7 @@ s1 %>% kable(digits = 2)
 
 ```
 
+
 ```{r}
 #| label: fig-fighist
 #| fig-cap: "Frequency histogram of duration of having bronchitis or chronic coughing "
@@ -126,6 +127,8 @@ vaccine_stat %>% filter(`Do you have previous history of vaccination? if yes, wr
   
   
 ```
+
+If yes then, which?
 
 ```{r}
 vaccine_stat %>% filter(`Do you have previous history of vaccination? if yes, write the name of vaccine.`!="No") %>%
@@ -272,6 +275,55 @@ association_data %>%
   modify_spanning_header(starts_with("stat_") ~ "**Smoking status**")  # Column variable name
 ```
 
+
+
+
+```{r}
+data0 %>% select(`Work environment`,`For how many years you had bronchitis or chronic coughing with sputum from the chest?`,`How many months in the last year have you had bronchitis or chronic coughing with sputum from the chest?`) %>% 
+  #tbl_strata(strata = Gender,~.x %>% 
+  tbl_summary(by=`Work environment`)%>% add_p()
+```
+
+There is a statistically significant difference between the off-site and on-site groups in terms of the number of years they have had bronchitis or chronic coughing. The off-site group has a longer history (median 13 years) compared to the on-site group (median 10 years), and the p-value (0.024) indicates that this difference is statistically significant at the 5% level.
+
+There is a marginally statistically significant difference (p = 0.050) between the groups in terms of the number of months with bronchitis or coughing in the last year. The off-site group again reports a slightly higher duration (median 6 months) compared to the on-site group (median 5 months). This result is right on the threshold of significance.
+
+
+### D) Do you kNow about COPD and its affect in your quality of life?+ education level 
+
+
+```{r}
+#rm(list = ls())
+
+
+data0 %>%
+  mutate(new_educ = factor(case_when(
+    `Educational qualification`  %in% c('No formal education','Secondary level') ~ 'No formal education and Secondary level',
+    #`Educational qualification` == 'Secondary level' ~ 'Secondary level',
+    `Educational qualification` == 'Undergraduate' ~ 'Undergraduate',
+    `Educational qualification` %in% c('Graduate', 'Postgraduate') ~ 'Graduate and Postgraduate',
+    TRUE ~ as.character(`Educational qualification`)
+  ), levels = c("No formal education and Secondary level","Undergraduate", "Graduate and Postgraduate")),
+  
+  `Do you have any member in your family have experienced the same condition?` =
+           factor(`Do you have any member in your family have experienced the same condition?`,levels = c("No","Yes" )))->data2
+
+table(data2$`Do you have any member in your family have experienced the same condition?`)
+  
+data2 %>% select(new_educ,`Do you kNow about COPD and its affect in your quality of life?`,`Do you have any member in your family have experienced the same condition?`) %>% 
+  tbl_summary(by=new_educ,
+              type = everything() ~ "categorical",
+              label =list(`Do you have any member in your family have experienced the same condition?`~"Do you have any member in your family have experienced the same condition? (yes)"),
+              sort = everything() ~ "alphanumeric",
+              missing = "ifany"
+              ) %>% add_p()
+
+```
+
+
+
+
+
 ```{r}
 
 glm(Corticosteroids~age+gender+do_you_have_a_previous_history_of_smoking,
@@ -286,7 +338,6 @@ glm(`Oxygen therapy`~age+gender+do_you_have_a_previous_history_of_smoking,
 ```
 
 # COPD Patient Management Survey_old (n=30)
-
 
 ```{r}
 #rm(list = ls())
